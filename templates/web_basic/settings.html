@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Web Basic Settings</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f8fafc; color: #0f172a; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    button { padding: 10px 16px; background: #38bdf8; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    input { padding: 10px; margin-right: 10px; border: 1px solid #ccc; border-radius: 6px; }
+  </style>
+  <script src="../../lib/instalink-sdk.js"></script>
+</head>
+<body>
+  <div class="card">
+    <h1>Web Basic Extension</h1>
+    <p>This is the settings page for your extension.</p>
+    
+    <div>
+      <input type="text" id="nameInput" placeholder="Enter your name">
+      <button onclick="saveName()">Save to Storage</button>
+    </div>
+    
+    <p>Saved Name: <strong id="savedName">None</strong></p>
+    
+    <button onclick="InstaLinkSDK.capabilities.toast('Hello from Web Extension!')">Show Toast</button>
+  </div>
+
+  <script>
+    InstaLinkSDK.init("sample.web.basic");
+
+    function saveName() {
+        const name = document.getElementById('nameInput').value;
+        InstaLinkSDK.storage.set("username", name);
+        updateDisplay();
+        InstaLinkSDK.capabilities.toast("Saved!");
+    }
+
+    function updateDisplay() {
+        const saved = InstaLinkSDK.storage.get("username", "None");
+        document.getElementById('savedName').innerText = saved;
+    }
+
+    updateDisplay();
+  </script>
+</body>
+</html>
+
+

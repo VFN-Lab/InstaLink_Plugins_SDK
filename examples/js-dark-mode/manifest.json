@@ -1,0 +1,14 @@
+{
+  "id": "js_dark_mode",
+  "slug": "js_dark_mode",
+  "name": "Dark Mode Enforcer",
+  "version": "1.0.0",
+  "author": "InstaLink Official",
+  "description": "Forces a dark theme on any website you visit by modifying the page styles.",
+  "type": "normal",
+  "runtime_mode": "web",
+  "permissions": ["inject_scripts"],
+  "matches": ["<all_urls>"],
+  "content_scripts": ["index.js"],
+  "content_styles": []
+}

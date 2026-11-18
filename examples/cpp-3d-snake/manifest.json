@@ -1,0 +1,34 @@
+{
+  "spec_version": "2.0",
+  "id": "com.instalink.snake3d",
+  "slug": "snake3d",
+  "name": "3D Snake",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "An immersive 3D Snake game using native surface rendering.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": [
+    "native_runtime",
+    "home_entry"
+  ],
+  "home_entry": {
+    "title": "3D Snake",
+    "target_url": "instalink://com.instalink.snake3d",
+    "accent_hex": "#3b82f6"
+  },
+  "presentation": {
+    "mode": "immersive_native",
+    "renderer": "native_surface",
+    "show_exit_chip": true,
+    "prefer_landscape": false
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libsnake3d.so",
+    "supports_surface_rendering": true
+  },
+  "game_controls": {
+    "layout": "dpad"
+  }
+}

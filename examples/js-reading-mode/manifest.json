@@ -1,0 +1,14 @@
+{
+  "id": "js_reading_mode",
+  "slug": "js_reading_mode",
+  "name": "Focus Reading Mode",
+  "version": "1.0.0",
+  "author": "InstaLink Official",
+  "description": "Removes clutter, menus, and sidebars from articles to help you focus on reading.",
+  "type": "normal",
+  "runtime_mode": "web",
+  "permissions": ["inject_scripts"],
+  "matches": ["<all_urls>"],
+  "content_scripts": ["index.js"],
+  "content_styles": []
+}

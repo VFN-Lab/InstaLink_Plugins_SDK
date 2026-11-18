@@ -1,0 +1,17 @@
+{
+  "spec_version": "2.0",
+  "id": "sample.web.basic",
+  "slug": "sample-web-basic",
+  "name": "Sample Web Basic",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "Minimal web extension template with settings UI.",
+  "type": "normal",
+  "runtime_mode": "web",
+  "permissions": ["storage"],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://sample.web.basic",
+  "icon_path": "icon.svg"
+}
+
+

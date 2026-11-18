@@ -1,0 +1,37 @@
+{
+  "spec_version": "2.0",
+  "id": "sample.sherpa.tts",
+  "slug": "sample-sherpa-tts",
+  "name": "Sample Sherpa TTS",
+  "version": "1.0.0",
+  "author": "InstaLink SDK",
+  "description": "Sherpa-ONNX native TTS extension scaffold for external developers.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": [
+    "storage",
+    "instalink_page",
+    "home_entry",
+    "native_runtime"
+  ],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://sample.sherpa.tts",
+  "home_entry": {
+    "title": "Sherpa TTS",
+    "target_url": "instalink://sample.sherpa.tts",
+    "accent_hex": "#b91c1c"
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libsherpa_tts_adapter.so",
+    "dependency_root": "runtime_bundle/jniLibs",
+    "dependencies": [
+      "libc++_shared.so",
+      "libonnxruntime.so",
+      "libsherpa-onnx-c-api.so",
+      "libsherpa-onnx-cxx-api.so",
+      "libsherpa-onnx-jni.so"
+    ]
+  },
+  "icon_path": "icon.svg"
+}

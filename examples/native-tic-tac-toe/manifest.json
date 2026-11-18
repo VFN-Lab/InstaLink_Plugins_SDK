@@ -1,0 +1,22 @@
+{
+  "id": "cpp_tic_tac_toe",
+  "slug": "cpp-tic-tac-toe",
+  "name": "Tic-Tac-Toe Arcade",
+  "version": "1.0.0",
+  "author": "InstaLink Official",
+  "description": "Play a game of Tic-Tac-Toe against an AI. Rendered natively on a C++ Surface.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": ["native_runtime"],
+  "presentation": {
+    "mode": "immersive_native",
+    "renderer": "native_surface",
+    "show_exit_chip": true,
+    "prefer_landscape": false
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libtictactoe.so",
+    "supports_surface_rendering": true
+  }
+}

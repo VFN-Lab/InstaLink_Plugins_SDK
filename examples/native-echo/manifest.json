@@ -1,0 +1,31 @@
+{
+  "spec_version": "2.0",
+  "id": "sample.native.basic",
+  "slug": "sample-native-basic",
+  "name": "Sample Native Basic",
+  "version": "1.0.0",
+  "author": "InstaLink SDK",
+  "description": "Minimal native extension template using the stable InstaLink ABI.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": [
+    "storage",
+    "instalink_page",
+    "home_entry",
+    "native_runtime"
+  ],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://sample.native.basic",
+  "home_entry": {
+    "title": "Native Basic",
+    "target_url": "instalink://sample.native.basic",
+    "accent_hex": "#0f172a"
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libnative_basic_adapter.so",
+    "dependency_root": "runtime_bundle/jniLibs",
+    "dependencies": []
+  },
+  "icon_path": "icon.svg"
+}

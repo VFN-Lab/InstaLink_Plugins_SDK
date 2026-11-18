@@ -1,0 +1,16 @@
+﻿cmake_minimum_required(VERSION 3.22)
+project(tictactoe C CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+find_library(log-lib log)
+find_library(android-lib android)
+
+add_library(tictactoe SHARED tictactoe.cpp)
+
+target_link_libraries(tictactoe PRIVATE
+    ${android-lib}
+    ${log-lib})

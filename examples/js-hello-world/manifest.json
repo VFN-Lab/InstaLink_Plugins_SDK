@@ -1,0 +1,14 @@
+{
+  "id": "js_hello_world",
+  "slug": "js_hello_world",
+  "name": "Hello World JS Plugin",
+  "version": "1.0.0",
+  "author": "InstaLink SDK",
+  "description": "A basic JavaScript plugin that shows an alert.",
+  "type": "normal",
+  "runtime_mode": "web",
+  "permissions": ["inject_scripts"],
+  "matches": ["<all_urls>"],
+  "content_scripts": ["index.js"],
+  "content_styles": []
+}

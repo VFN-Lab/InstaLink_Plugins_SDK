@@ -1,0 +1,15 @@
+{
+  global:
+    instalink_extension_on_load;
+    instalink_extension_on_unload;
+    instalink_extension_describe;
+    instalink_extension_invoke;
+    instalink_extension_free_string;
+    instalink_extension_game_attach_surface;
+    instalink_extension_game_resize_surface;
+    instalink_extension_game_detach_surface;
+    instalink_extension_game_handle_input;
+  local: *;
+};
+
+

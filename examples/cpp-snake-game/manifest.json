@@ -1,0 +1,34 @@
+{
+  "spec_version": "2.0",
+  "id": "com.instalink.snake_game",
+  "slug": "snake-game",
+  "name": "Classic Snake",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "A classic snake game built natively in C++ using software rendering.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": [
+    "native_runtime",
+    "home_entry"
+  ],
+  "home_entry": {
+    "title": "Snake Game",
+    "target_url": "instalink://com.instalink.snake_game",
+    "accent_hex": "#22c55e"
+  },
+  "presentation": {
+    "mode": "immersive_native",
+    "renderer": "native_surface",
+    "show_exit_chip": true,
+    "prefer_landscape": false
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libsnake_game.so",
+    "supports_surface_rendering": true
+  },
+  "game_controls": {
+    "layout": "dpad"
+  }
+}

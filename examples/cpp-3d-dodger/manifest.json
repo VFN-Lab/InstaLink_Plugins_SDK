@@ -1,0 +1,28 @@
+{
+  "spec_version": "2.0",
+  "id": "com.instalink.dodger3d",
+  "slug": "dodger3d",
+  "name": "3D Dodger",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "A retro 3D wireframe game built natively in C++ using software rendering.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": ["native_runtime"],
+  "presentation": {
+    "mode": "immersive_native",
+    "renderer": "native_surface",
+    "show_exit_chip": true,
+    "prefer_landscape": true
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libdodger3d.so",
+    "supports_surface_rendering": true
+  },
+  "game_controls": {
+    "layout": "dpad"
+  }
+}
+
+

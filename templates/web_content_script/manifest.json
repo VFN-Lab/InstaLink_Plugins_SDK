@@ -1,0 +1,18 @@
+{
+  "spec_version": "2.0",
+  "id": "sample.web.content",
+  "slug": "sample-web-content",
+  "name": "Sample Web Content Script",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "Template showing how to inject JS and CSS into web pages.",
+  "type": "normal",
+  "runtime_mode": "web",
+  "permissions": ["inject_scripts"],
+  "matches": ["<all_urls>"],
+  "content_scripts": ["content.js"],
+  "content_styles": ["styles.css"],
+  "icon_path": "icon.svg"
+}
+
+

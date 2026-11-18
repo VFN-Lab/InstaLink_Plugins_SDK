@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaLink Developers — InstaLink SDK</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <header class="devsite-header">
+        <div class="header-start">
+            <button id="menu-toggle" class="mobile-menu-btn" type="button" aria-label="Menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18M3 12h18M3 18h18" />
+                </svg>
+            </button>
+
+            <a href="#sec-overview" class="brand-lockup"
+                onclick="event.preventDefault(); document.querySelector('[data-section=sec-overview]').click();">
+                <img src="assets/img/instalink-logo.png" alt="InstaLink Logo" class="brand-logo">
+                <span class="brand-text">
+                    <span class="brand-name">InstaLink</span>
+                </span>
+            </a>
+
+            <nav class="header-tabs" aria-label="Primary navigation">
+                <a href="#sec-overview" class="header-tab" data-tab="essentials" data-target="sec-overview">
+                    <span class="lang-en">Overview</span>
+                    <span class="lang-ar" style="display:none;">نظرة عامة</span>
+                </a>
+                <a href="#sec-quickstart" class="header-tab" data-tab="develop" data-target="sec-quickstart">
+                    <span class="lang-en">Get started</span>
+                    <span class="lang-ar" style="display:none;">البدء السريع</span>
+                </a>
+                <a href="#sec-bridge" class="header-tab" data-tab="api" data-target="sec-bridge">
+                    <span class="lang-en">API Reference</span>
+                    <span class="lang-ar" style="display:none;">مرجع الـ API</span>
+                </a>
+                <a href="#sec-games" class="header-tab" data-tab="games" data-target="sec-games">
+                    <span class="lang-en">Games</span>
+                    <span class="lang-ar" style="display:none;">الألعاب</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="header-end">
+            <div class="lang-dropdown">
+                <button id="lang-toggle" class="lang-pill" type="button" aria-haspopup="true" aria-expanded="false">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path
+                            d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    <span id="lang-label">EN</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+                <div id="lang-menu" class="lang-menu" role="menu">
+                    <button type="button" class="lang-option active" data-lang="en" role="menuitem">EN</button>
+                    <button type="button" class="lang-option" data-lang="ar" role="menuitem">AR</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="devsite-shell">
+        <!-- Left Sidebar -->
+        <aside id="left-sidebar" class="left-sidebar">
+            <div class="sidebar-search-wrap">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                        <input id="global-search" type="search" placeholder="Search" autocomplete="off">
+                        <span class="search-kbd">/</span>
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+
+            <div class="sidebar-scroll">
+                <div class="nav-group">
+                    <div class="nav-group-title">
+                        <span class="lang-en">InstaLink SDK</span>
+                        <span class="lang-ar" style="display:none;">InstaLink SDK</span>
+                    </div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#sec-overview" data-section="sec-overview" class="nav-link active lang-en">About
+                                InstaLink SDK</a>
+                            <a href="#sec-overview" data-section="sec-overview" class="nav-link active lang-ar"
+                                style="display:none;">عن InstaLink SDK</a>
+                        </li>
+                        <li>
+                            <a href="#sec-quickstart" data-section="sec-quickstart" class="nav-link lang-en">Get started
+                                &amp; CLI</a>
+                            <a href="#sec-quickstart" data-section="sec-quickstart" class="nav-link lang-ar"
+                                style="display:none;">البداية السريعة وأداة CLI</a>
+                        </li>
+                        <li>
+                            <a href="#sec-web" data-section="sec-web" class="nav-link lang-en">Web extensions
+                                (JS/CSS)</a>
+                            <a href="#sec-web" data-section="sec-web" class="nav-link lang-ar"
+                                style="display:none;">إضافات الويب (JS/CSS)</a>
+                        </li>
+                        <li>
+                            <a href="#sec-manifest" data-section="sec-manifest" class="nav-link lang-en">Manifest
+                                reference</a>
+                            <a href="#sec-manifest" data-section="sec-manifest" class="nav-link lang-ar"
+                                style="display:none;">مرجع manifest.json</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">
+                        <span class="lang-en">APIs &amp; Security</span>
+                        <span class="lang-ar" style="display:none;">الواجهات والصلاحيات</span>
+                    </div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#sec-bridge" data-section="sec-bridge" class="nav-link lang-en">JS Bridge, Permissions &amp; Examples</a>
+                            <a href="#sec-bridge" data-section="sec-bridge" class="nav-link lang-ar"
+                                style="display:none;">الجسر والصلاحيات والأمثلة</a>
+                        </li>
+                        <li>
+                            <a href="#sec-native" data-section="sec-native" class="nav-link lang-en">Native C++ ABI</a>
+                            <a href="#sec-native" data-section="sec-native" class="nav-link lang-ar"
+                                style="display:none;">إضافات C++ الأصلية</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-group-title">
+                        <span class="lang-en">Games &amp; Distribution</span>
+                        <span class="lang-ar" style="display:none;">الألعاب والنشر</span>
+                    </div>
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#sec-games" data-section="sec-games" class="nav-link lang-en">Immersive games
+                                SDK</a>
+                            <a href="#sec-games" data-section="sec-games" class="nav-link lang-ar"
+                                style="display:none;">الألعاب المدمجة بملء الشاشة</a>
+                        </li>
+                        <li>
+                            <a href="#sec-publish" data-section="sec-publish" class="nav-link lang-en">Test, debug &amp;
+                                publish</a>
+                            <a href="#sec-publish" data-section="sec-publish" class="nav-link lang-ar"
+                                style="display:none;">الاختبار والتغليف والنشر</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Workspace -->
+        <main class="main-workspace">
+            <article class="article-sheet">
+                <!-- 1. OVERVIEW -->
+                <section id="sec-overview" class="doc-section active" data-tab="essentials">
+                    <div class="lang-en">
+                        <div class="title-row">
+                            <h1>InstaLink SDK</h1>
+                        </div>
+                        <p><strong>InstaLink SDK</strong> makes it straightforward for developers to build powerful
+                            browser extensions, AI/audio plugins, and native fullscreen games for the
+                            <strong>InstaLink</strong> Android browser.</p>
+                        <p>Whether you want to modify web pages with JavaScript and CSS, call Android hardware
+                            capabilities like TTS, vibration, sensors, and notifications, or load high-speed compiled
+                            C++ adapters, InstaLink SDK handles discovery, sandboxing, and permission enforcement
+                            automatically.</p>
+
+                        <div class="callout">
+                            <strong>Golden Rule:</strong> Extensions never communicate directly with Android OS APIs.
+                            All calls route through <code>window.InstaLink</code> into the permission-enforcing InstaLink
+                            Host.
+                        </div>
+
+                        <h2>Supported extension types</h2>
+                        <ul>
+                            <li><strong>Web Extensions (<code>runtime_mode: "web"</code>):</strong> Content scripts, CSS
+                                injection, and local HTML settings UIs.</li>
+                            <li><strong>Hybrid &amp; System Capability Extensions (<code>"android"</code> /
+                                    <code>"hybrid"</code>):</strong> Invoke host TTS speech, notifications,
+                                device/network info, Bluetooth, volume, audio routing, sensors, and app launches.</li>
+                            <li><strong>Native C++ Adapters (<code>"native"</code>):</strong> Compile shared
+                                <code>.so</code> libraries loaded securely with <code>dlopen/dlsym</code> using
+                                <code>include/instalink_extension_api.h</code>.</li>
+                            <li><strong>Immersive Games:</strong> Fullscreen <code>immersive_web</code> canvas
+                                experiences or C++ <code>ANativeWindow</code> <code>immersive_native</code> games with
+                                built-in D-Pad overlays.</li>
+                        </ul>
+
+                        <h2>How it works</h2>
+                        <div class="arch-flow">
+                            <div class="arch-layer">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">Extension UI / Content Script HTML + JS</span>
+                                </div>
+                                <p class="arch-layer-desc">Runs inside a sandboxed WebView (<code>settings.html</code>,
+                                    <code>index.js</code>, <code>styles.css</code>, or <code>web_canvas</code>). It
+                                    renders the extension interface and page scripts, without direct access to Android
+                                    APIs.</p>
+                            </div>
+
+                            <div class="arch-connector">Sends requests through the JS Bridge</div>
+
+                            <div class="arch-layer bridge">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">window.InstaLink Bridge</span>
+                                </div>
+                                <p class="arch-layer-desc">The official JavaScript interface automatically injected by
+                                    the browser, providing structured APIs: <code>browser</code>, <code>storage</code>,
+                                    <code>extension</code>, <code>capabilities</code>, and <code>nativeRuntime</code>.
+                                </p>
+                            </div>
+
+                            <div class="arch-connector">Verifies &amp; dispatches securely to</div>
+
+                            <div class="arch-layer host">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">InstaLink Host</span>
+                                </div>
+                                <p class="arch-layer-desc">The browser's security and validation engine. Every call is
+                                    checked against the extension's declared <code>permissions</code> in
+                                    <code>manifest.json</code>, user settings, and Android runtime permissions before
+                                    execution.</p>
+                            </div>
+
+                            <div class="arch-connector">Branches according to task type</div>
+
+                            <div class="arch-split">
+                                <div class="arch-layer">
+                                    <div class="arch-layer-head">
+                                        <span class="arch-layer-title">Android OS &amp; Hardware</span>
+                                    </div>
+                                    <p class="arch-layer-desc">Executes system capabilities safely on behalf of the
+                                        extension: Notifications, TTS Speech, Sensors, Volume Control, Audio Routing,
+                                        Vibration, Bluetooth, and App Launch.</p>
+                                </div>
+
+                                <div class="arch-layer">
+                                    <div class="arch-layer-head">
+                                        <span class="arch-layer-title">Your Native C++ Adapter .so via C ABI</span>
+                                    </div>
+                                    <p class="arch-layer-desc">Loads your compiled <code>.so</code> library via
+                                        <code>dlopen/dlsym</code> using <code>instalink_extension_api.h</code> to run
+                                        AI/ONNX models, DSP audio, or <code>ANativeWindow</code> game rendering.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <div class="title-row">
+                            <h1>InstaLink SDK</h1>
+                        </div>
+                        <p>تتيح لك حزمة <strong>InstaLink SDK</strong> بناء إضافات متكاملة، وأدوات ذكاء اصطناعي وصوتيات،
+                            وألعاب أصلية بملء الشاشة لمتصفح <strong>InstaLink</strong> على Android.</p>
+                        <p>سواء كنت تريد تعديل صفحات الويب باستخدام JavaScript و CSS، أو استغلال قدرات الهاتف مثل النطق
+                            الصوتي TTS والإشعارات والاهتزاز والحساسات، أو تشغيل مكتبات C++ سريعة، تتكفل الحزمة والمضيف
+                            بكل تفاصيل التغليف والأمان والتحقق من الصلاحيات.</p>
+
+                        <div class="callout">
+                            <strong>القاعدة الذهبية:</strong> لا تتواصل الإضافات مع نظام Android مباشرة؛ كل الأوامر تمر
+                            عبر جسر <code>window.InstaLink</code> إلى المضيف الوسيط في InstaLink للتحقق من الصلاحيات المعلنة في
+                            <code>manifest.json</code>.
+                        </div>
+
+                        <h2>أنواع الإضافات المدعومة</h2>
+                        <ul>
+                            <li><strong>إضافات الويب (<code>runtime_mode: "web"</code>):</strong> حقن JS/CSS في المواقع
+                                مع واجهة إعدادات HTML.</li>
+                            <li><strong>إضافات قدرات النظام (<code>"android"</code> / <code>"hybrid"</code>):</strong>
+                                الإشعارات، تحويل النص لكلام TTS، الاهتزاز، الحساسات، الشبكة، البلوتوث، وتوجيه الصوت.
+                            </li>
+                            <li><strong>إضافات C++ الأصلية (<code>"native"</code>):</strong> مكتبات <code>.so</code>
+                                سريعة عبر <code>include/instalink_extension_api.h</code>.</li>
+                            <li><strong>الألعاب المدمجة (Immersive Games):</strong> ألعاب بملء الشاشة عبر Web Canvas أو
+                                <code>ANativeWindow</code> مع أزرار D-Pad جاهزة.</li>
+                        </ul>
+
+                        <h2>آلية العمل</h2>
+                        <div class="arch-flow">
+                            <div class="arch-layer">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">واجهة أو سكربت الإضافة HTML + JS</span>
+                                </div>
+                                <p class="arch-layer-desc">تعمل داخل بيئة WebView معزولة (مثل <code>settings.html</code>
+                                    أو <code>index.js</code> أو <code>web_canvas</code>)، وتعرض واجهة الإضافة أو تعدّل
+                                    صفحات الويب دون أي وصول مباشر لنظام Android.</p>
+                            </div>
+
+                            <div class="arch-connector">ترسل الطلبات عبر جسر JavaScript</div>
+
+                            <div class="arch-layer bridge">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">جسر window.InstaLink</span>
+                                </div>
+                                <p class="arch-layer-desc">الواجهة البرمجية الرسمية التي يحقنها المتصفح تلقائيا، وتوفر
+                                    حزم دوال منظمة هي: <code>browser</code> و<code>storage</code>
+                                    و<code>extension</code> و<code>capabilities</code> و<code>nativeRuntime</code>.</p>
+                            </div>
+
+                            <div class="arch-connector">يتحقق من الصلاحيات ويوجه الطلب إلى</div>
+
+                            <div class="arch-layer host">
+                                <div class="arch-layer-head">
+                                    <span class="arch-layer-title">المضيف الوسيط في InstaLink</span>
+                                </div>
+                                <p class="arch-layer-desc">طبقة الأمان والتحقق داخل المتصفح؛ حيث تفحص كل طلب وتتحقق من
+                                    وجود الصلاحية في <code>manifest.json</code> وموافقة المستخدم وصلاحيات أندرويد قبل
+                                    تنفيذ أي إجراء.</p>
+                            </div>
+
+                            <div class="arch-connector">يتفرع التنفيذ حسب نوع المهمة</div>
+
+                            <div class="arch-split">
+                                <div class="arch-layer">
+                                    <div class="arch-layer-head">
+                                        <span class="arch-layer-title">نظام Android والعتاد</span>
+                                    </div>
+                                    <p class="arch-layer-desc">تنفيذ قدرات الجهاز بأمان نيابة عن الإضافة: الإشعارات،
+                                        النطق الصوتي TTS، الحساسات، التحكم بالصوت ومخرجه، الاهتزاز، البلوتوث، وفتح
+                                        التطبيقات.</p>
+                                </div>
+
+                                <div class="arch-layer">
+                                    <div class="arch-layer-head">
+                                        <span class="arch-layer-title">مكتبة C++ الخاصة بك .so عبر C ABI</span>
+                                    </div>
+                                    <p class="arch-layer-desc">تحميل مكتبة <code>.so</code> عبر
+                                        <code>dlopen/dlsym</code> وفق ترويسة <code>instalink_extension_api.h</code>
+                                        لتشغيل نماذج AI/ONNX أو معالجة الصوت أو الرسم على <code>ANativeWindow</code>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. QUICK START -->
+                <section id="sec-quickstart" class="doc-section" data-tab="develop">
+                    <div class="lang-en">
+                        <h1>Get started &amp; CLI</h1>
+                        <p>Scaffold, compile, and package a new InstaLink extension in under a minute using
+                            <code>instalink-cli</code>.</p>
+                        <h2>Prerequisites</h2>
+                        <ul>
+                            <li><strong>Web extensions:</strong> Any editor + Python 3.8+ (for CLI packaging).</li>
+                            <li><strong>Native C++ / Game extensions:</strong> Android SDK with NDK (e.g.
+                                <code>27.0.12077973</code>) and CMake (<code>3.22.1</code>).</li>
+                        </ul>
+                        <h2>CLI workflow</h2>
+                        <pre><code># 1. Create a new extension (--type: web | native | game)
+instalink-cli.bat create my-extension --type web
+
+# 2. Build native C++ adapters (Native / Game extensions only)
+tools\build-native.bat .\my-extension
+
+# 3. Package extension into dist/ (excludes native/ and build/ automatically)
+instalink-cli.bat pack .\my-extension</code></pre>
+                        <h3>Local NDK configuration (optional)</h3>
+                        <p>If your NDK lives outside <code>%LOCALAPPDATA%\Android\Sdk</code>, copy
+                            <code>config.example.json</code> to <code>config.json</code> and set
+                            <code>ANDROID_NDK_HOME</code> and <code>CMAKE_PATH</code>.</p>
+                        <pre><code># Linux / macOS alternative
+./instalink-cli.sh create my-extension --type web
+./tools/build-native.sh ./my-extension
+./tools/pack-extension.sh ./my-extension</code></pre>
+                        <h2>SDK Package Contents</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>Folder / File</th><th>Purpose</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>include/</code></td><td>Stable C ABI header (<code>instalink_extension_api.h</code>) for native C++ adapters</td></tr>
+                                    <tr><td><code>lib/</code></td><td>Promise-style JavaScript bridge wrapper &amp; desktop mock (<code>instalink-sdk.js</code>)</td></tr>
+                                    <tr><td><code>templates/</code></td><td>Starter scaffolds: <code>web_basic</code>, <code>web_content_script</code>, <code>native_basic</code>, <code>native_sherpa_tts</code>, <code>immersive_game</code></td></tr>
+                                    <tr><td><code>examples/</code></td><td>Working JS &amp; C++ examples (dark mode, reading mode, native echo, snake, 3D dodger, tic-tac-toe)</td></tr>
+                                    <tr><td><code>releases/</code></td><td>Pre-packaged installable example bundles (<code>.ins</code>) ready for sideload testing</td></tr>
+                                    <tr><td><code>tools/</code></td><td>CLI (<code>instalink_cli.py</code>), native compilers (<code>Build-NativeExtension.ps1</code>), and packagers</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>البداية السريعة وأداة CLI</h1>
+                        <p>أنشئ إضافتك الجديدة وقم ببنائها وتغليفها في أقل من دقيقة باستخدام أداة
+                            <code>instalink-cli</code>.</p>
+                        <h2>المتطلبات</h2>
+                        <ul>
+                            <li><strong>لإضافات الويب:</strong> أي محرر نصوص + Python 3.8+ فقط.</li>
+                            <li><strong>لإضافات C++ والألعاب الأصلية:</strong> Android SDK مع NDK (مثل
+                                <code>27.0.12077973</code>) وCMake (<code>3.22.1</code>).</li>
+                        </ul>
+                        <h2>الأوامر الأساسية</h2>
+                        <pre><code># 1. إنشاء إضافة جديدة (web | native | game)
+instalink-cli.bat create my-extension --type web
+
+# 2. ترجمة كود C++ (لإضافات native والألعاب فقط)
+tools\build-native.bat .\my-extension
+
+# 3. تغليف الإضافة داخل dist/ (يستبعد native/ و build/ تلقائيا)
+instalink-cli.bat pack .\my-extension</code></pre>
+                        <h3>ضبط مسار NDK محليا</h3>
+                        <p>يكتشف سكربت <code>build-native.bat</code> مسار <code>ANDROID_SDK_ROOT</code> تلقائيا، أو
+                            يمكنك نسخ <code>config.example.json</code> إلى <code>config.json</code> لتحديد المسارات
+                            يدويا.</p>
+                        <pre><code># على Linux / macOS
+./instalink-cli.sh create my-extension --type web
+./tools/build-native.sh ./my-extension
+./tools/pack-extension.sh ./my-extension</code></pre>
+                        <h2>محتويات حزمة SDK</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>المجلد / الملف</th><th>الوظيفة</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>include/</code></td><td>ترويسة C ABI القياسية (<code>instalink_extension_api.h</code>) لإضافات C++</td></tr>
+                                    <tr><td><code>lib/</code></td><td>مكتبة التسهيل والمحاكي للاختبار على الكمبيوتر (<code>instalink-sdk.js</code>)</td></tr>
+                                    <tr><td><code>templates/</code></td><td>قوالب جاهزة: <code>web_basic</code>، <code>web_content_script</code>، <code>native_basic</code>، <code>native_sherpa_tts</code>، <code>immersive_game</code></td></tr>
+                                    <tr><td><code>examples/</code></td><td>أمثلة عملية بلغة JS وC++ (الوضع الداكن، القراءة، محرك الصدى، ألعاب Snake و3D Dodger وTic-Tac-Toe)</td></tr>
+                                    <tr><td><code>releases/</code></td><td>حزم أمثلة مضغوطة (<code>.ins</code>) جاهزة للتجربة المباشرة على التطبيق</td></tr>
+                                    <tr><td><code>tools/</code></td><td>أداة CLI وأدوات الترجمة والتغليف لويندوز ولينكس وماك</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. WEB EXTENSIONS -->
+                <section id="sec-web" class="doc-section" data-tab="develop">
+                    <div class="lang-en">
+                        <h1>Web extensions (HTML, CSS &amp; JS)</h1>
+                        <p>Web extensions inject scripts/styles into websites matching your <code>matches</code>
+                            patterns and can open local HTML settings pages via <code>instalink://</code> links.</p>
+                        <h2>Extension files &amp; directory layout</h2>
+                        <p>Create a root folder for your extension (for example, <code>my-web-extension</code>) and place the following files directly inside it:</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>File</th><th>Status</th><th>Role</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>manifest.json</code></td><td>Required</td><td>Defines extension metadata, permissions, target URLs, and entry points.</td></tr>
+                                    <tr><td><code>icon.svg</code></td><td>Recommended</td><td>Vector extension icon (128&times;128 SVG) displayed in the browser and store.</td></tr>
+                                    <tr><td><code>index.js</code></td><td>Optional</td><td>JavaScript content script automatically injected into matched web pages.</td></tr>
+                                    <tr><td><code>styles.css</code></td><td>Optional</td><td>Stylesheet injected alongside your script into matched web pages.</td></tr>
+                                    <tr><td><code>settings.html</code></td><td>Optional</td><td>Local HTML page rendered inside WebView for settings or extension dashboards.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2>Injecting content scripts</h2>
+                        <p>Declare <code>"inject_scripts"</code> in <code>permissions</code>, specify target URLs in
+                            <code>matches</code>, and list your script files in <code>content_scripts</code>.</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>Pattern Example</th><th>Matches</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>"&lt;all_urls&gt;"</code></td><td>Every HTTP/HTTPS web page</td></tr>
+                                    <tr><td><code>"*://*.google.com/*"</code></td><td>All Google subdomains</td></tr>
+                                    <tr><td><code>"https://example.com/*"</code></td><td>Specific HTTPS domain paths</td></tr>
+                                    <tr><td><code>"*://*/search*"</code></td><td>Any search page URL</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <pre><code>// index.js (using IIFE + MutationObserver for dynamic pages)
+(function () {
+  "use strict";
+  if (document.getElementById('instalink-ext-badge')) return;
+  const badge = document.createElement('div');
+  badge.id = 'instalink-ext-badge';
+  badge.textContent = 'Modified by InstaLink Extension';
+  document.body.appendChild(badge);
+
+  const observer = new MutationObserver(function () {
+    // React to dynamic DOM updates on Single-Page Apps
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();</code></pre>
+                        <h2>Injecting CSS styles</h2>
+                        <pre><code>/* styles.css — declared inside content_styles */
+html, body { background-color: #121212 !important; color: #e0e0e0 !important; }
+a { color: #8ab4f8 !important; }
+img, video { filter: brightness(0.85) contrast(1.1); }</code></pre>
+                        <h2>Using the SDK Wrapper (<code>lib/instalink-sdk.js</code>)</h2>
+                        <pre><code>&lt;script src="instalink-sdk.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  InstaLinkSDK.init("com.dev.my_ext");
+  InstaLinkSDK.capabilities.tts.speak("Hello from InstaLink!");
+  InstaLinkSDK.storage.set("visits", 42);
+&lt;/script&gt;</code></pre>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>إضافات الويب (HTML / CSS / JS)</h1>
+                        <p>تقوم إضافات الويب بحقن ملفات JS و CSS في المواقع المطابقة لـ <code>matches</code>، مع إمكانية
+                            توفير صفحة إعدادات كاملة تفتح داخليا عبر رابط <code>instalink://</code>.</p>
+                        <h2>ملفات وهيكل مجلد الإضافة</h2>
+                        <p>أنشئ مجلدا خاصا بإضافتك (مثل <code>my-web-extension</code>)، وضع بداخله الملفات التالية مباشرة:</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>الملف</th><th>الحالة</th><th>الوظيفة</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>manifest.json</code></td><td>إلزامي</td><td>يحدد بيانات الإضافة، الصلاحيات، أنماط المواقع <code>matches</code>، ونقاط الدخول.</td></tr>
+                                    <tr><td><code>icon.svg</code></td><td>مفضّل</td><td>أيقونة الإضافة بصيغة SVG لعرضها في المتصفح والمتجر.</td></tr>
+                                    <tr><td><code>index.js</code></td><td>اختياري</td><td>ملف JavaScript يُحقن تلقائيا داخل صفحات الويب المطابقة.</td></tr>
+                                    <tr><td><code>styles.css</code></td><td>اختياري</td><td>ملف تنسيقات CSS يُحقن لتعديل شكل المواقع المستهدفة.</td></tr>
+                                    <tr><td><code>settings.html</code></td><td>اختياري</td><td>واجهة HTML محلية تفتح داخل WebView كصفحة إعدادات أو لوحة تحكم للإضافة.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2>حقن السكربتات وتنسيقات CSS في المواقع</h2>
+                        <p>أضف صلاحية <code>"inject_scripts"</code> في <code>permissions</code> وحدد المواقع المستهدفة في
+                            <code>matches</code>، ثم أدرج ملفات JS في <code>content_scripts</code> وملفات CSS في <code>content_styles</code>.</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>نمط الرابط</th><th>النطاق الذي ينطبق عليه</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>"&lt;all_urls&gt;"</code></td><td>جميع صفحات الويب (HTTP/HTTPS)</td></tr>
+                                    <tr><td><code>"*://*.google.com/*"</code></td><td>كل نطاقات Google الفرعية</td></tr>
+                                    <tr><td><code>"https://example.com/*"</code></td><td>صفحات دومين محدد</td></tr>
+                                    <tr><td><code>"*://*/search*"</code></td><td>أي صفحة بحث تحتوي على search في الرابط</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <pre><code>// index.js (باستخدام IIFE + MutationObserver للصفحات الديناميكية)
+(function () {
+  "use strict";
+  if (document.getElementById('instalink-ext-badge')) return;
+  const badge = document.createElement('div');
+  badge.id = 'instalink-ext-badge';
+  badge.textContent = 'تم تفعيل الإضافة على الصفحة';
+  document.body.appendChild(badge);
+
+  const observer = new MutationObserver(function () {
+    // متابعة التغييرات الديناميكية في الصفحة
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();</code></pre>
+                        <h2>حقن ملفات التنسيق (<code>styles.css</code>)</h2>
+                        <pre><code>/* styles.css */
+html, body { background-color: #121212 !important; color: #e0e0e0 !important; }
+a { color: #8ab4f8 !important; }
+img, video { filter: brightness(0.85) contrast(1.1); }</code></pre>
+                        <h2>استخدام المكتبة المساعدة (<code>lib/instalink-sdk.js</code>)</h2>
+                        <pre><code>&lt;script src="instalink-sdk.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  InstaLinkSDK.init("com.dev.my_ext");
+  InstaLinkSDK.capabilities.tts.speak("أهلا بكم في إنستا لينك");
+  InstaLinkSDK.storage.set("visits", 42);
+&lt;/script&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- 4. MANIFEST REFERENCE -->
+                <section id="sec-manifest" class="doc-section" data-tab="develop">
+                    <div class="lang-en">
+                        <h1>Manifest reference (<code>manifest.json</code>)</h1>
+                        <p>Every InstaLink extension bundle must have a valid <code>manifest.json</code> at the archive
+                            root with <code>"spec_version": "2.0"</code>.</p>
+                        <h2>Core fields</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>spec_version</code></td>
+                                        <td><code>string</code></td>
+                                        <td>Always <code>"2.0"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id</code></td>
+                                        <td><code>string</code></td>
+                                        <td>Unique reverse-domain ID, e.g. <code>com.dev.reader</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>slug</code></td>
+                                        <td><code>string</code></td>
+                                        <td>Kebab-case identifier, e.g. <code>smart-reader</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>name</code>, <code>version</code>, <code>author</code>,
+                                            <code>description</code></td>
+                                        <td><code>string</code></td>
+                                        <td>Store metadata shown to users.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>type</code></td>
+                                        <td><code>string</code></td>
+                                        <td><code>"normal"</code> or <code>"hosted"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>runtime_mode</code></td>
+                                        <td><code>string</code></td>
+                                        <td><code>"web"</code>, <code>"android"</code>, <code>"native"</code>, or
+                                            <code>"hybrid"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>permissions</code></td>
+                                        <td><code>string[]</code></td>
+                                        <td>Array of declared permission strings.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>settings_page</code> &amp; <code>settings_instalink</code></td>
+                                        <td><code>string</code></td>
+                                        <td>Local HTML path &amp; deep link e.g.
+                                            <code>instalink://com.dev.reader</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>home_entry</code></td>
+                                        <td><code>object</code></td>
+                                        <td><code>{ title, target_url, accent_hex }</code> for browser home screen tile.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2>Optional, Presentation &amp; Game Control Fields</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>icon_path</code></td><td><code>string</code></td><td>Relative path to extension icon (SVG 128&times;128 recommended).</td></tr>
+                                    <tr><td><code>matches</code></td><td><code>string[]</code></td><td>URL patterns where content scripts run (e.g. <code>["&lt;all_urls&gt;"]</code>).</td></tr>
+                                    <tr><td><code>content_scripts</code> / <code>content_styles</code></td><td><code>string[]</code></td><td>JS and CSS files injected into matched pages.</td></tr>
+                                    <tr><td><code>presentation</code></td><td><code>object</code></td><td><code>mode</code> (<code>"standard"</code>, <code>"immersive_web"</code>, <code>"immersive_native"</code>), <code>renderer</code> (<code>"auto"</code>, <code>"web_canvas"</code>, <code>"native_surface"</code>), <code>show_exit_chip</code>, <code>prefer_landscape</code>.</td></tr>
+                                    <tr><td><code>game_controls</code></td><td><code>object</code></td><td><code>layout</code> (<code>"none"</code>, <code>"dpad"</code>, <code>"joystick"</code>), <code>primary_button</code>, <code>secondary_button</code> (<code>{ id, label }</code>).</td></tr>
+                                    <tr><td><code>native_runtime</code></td><td><code>object</code></td><td><code>library_root</code>, <code>library_name</code>, <code>dependency_root</code>, <code>dependencies</code>, <code>supports_surface_rendering</code>, <code>startup_action</code>.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2>Complete manifest example</h2>
+                        <pre><code>{
+  "spec_version": "2.0",
+  "id": "com.developer.smart_tools",
+  "slug": "smart-tools",
+  "name": "Smart Tools",
+  "version": "1.0.0",
+  "author": "InstaLink Developer",
+  "description": "Smart browser tools powered by InstaLink SDK.",
+  "type": "hosted",
+  "runtime_mode": "hybrid",
+  "permissions": ["inject_scripts", "storage", "instalink_page", "home_entry", "notifications"],
+  "matches": ["&lt;all_urls&gt;"],
+  "content_scripts": ["content.js"],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://com.developer.smart_tools",
+  "icon_path": "icon.svg",
+  "home_entry": {
+    "title": "Smart Tools",
+    "target_url": "instalink://com.developer.smart_tools",
+    "accent_hex": "#1a73e8"
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>مرجع ملف <code>manifest.json</code></h1>
+                        <p>يجب أن تحتوي كل حزمة إضافة على ملف <code>manifest.json</code> في جذر الحزمة مباشرة بالإصدار
+                            <code>"spec_version": "2.0"</code>.</p>
+                        <h2>الحقول الأساسية</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>الحقل</th>
+                                        <th>النوع</th>
+                                        <th>الشرح</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>spec_version</code></td>
+                                        <td><code>string</code></td>
+                                        <td>دائما <code>"2.0"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id</code></td>
+                                        <td><code>string</code></td>
+                                        <td>معرّف فريد بصيغة عكس النطاق مثل <code>com.dev.reader</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>slug</code></td>
+                                        <td><code>string</code></td>
+                                        <td>اسم مختصر مثل <code>smart-reader</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>name</code>, <code>version</code>, <code>author</code>,
+                                            <code>description</code></td>
+                                        <td><code>string</code></td>
+                                        <td>اسم الإضافة، رقم الإصدار، المطور، والوصف الظاهر في المتجر.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>type</code></td>
+                                        <td><code>string</code></td>
+                                        <td><code>"normal"</code> أو <code>"hosted"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>runtime_mode</code></td>
+                                        <td><code>string</code></td>
+                                        <td><code>"web"</code> أو <code>"android"</code> أو <code>"native"</code> أو
+                                            <code>"hybrid"</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>permissions</code></td>
+                                        <td><code>string[]</code></td>
+                                        <td>قائمة الصلاحيات المطلوبة.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>settings_page</code> و<code>settings_instalink</code></td>
+                                        <td><code>string</code></td>
+                                        <td>ملف HTML المحلي والرابط الداخلي <code>instalink://...</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>home_entry</code></td>
+                                        <td><code>object</code></td>
+                                        <td><code>{ title, target_url, accent_hex }</code> لإظهار أيقونة في الشاشة
+                                            الرئيسية.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h2>الحقول الاختيارية وإعدادات العرض والألعاب</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>الحقل</th><th>النوع</th><th>الشرح</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>icon_path</code></td><td><code>string</code></td><td>مسار الأيقونة بصيغة SVG.</td></tr>
+                                    <tr><td><code>matches</code></td><td><code>string[]</code></td><td>أنماط الروابط المستهدفة للحقن مثل <code>["&lt;all_urls&gt;"]</code>.</td></tr>
+                                    <tr><td><code>content_scripts</code> و<code>content_styles</code></td><td><code>string[]</code></td><td>ملفات JS وCSS التي تُحقن داخل صفحات الويب.</td></tr>
+                                    <tr><td><code>presentation</code></td><td><code>object</code></td><td><code>mode</code> (<code>"standard"</code> أو <code>"immersive_web"</code> أو <code>"immersive_native"</code>)، <code>renderer</code>، <code>show_exit_chip</code>، <code>prefer_landscape</code>.</td></tr>
+                                    <tr><td><code>game_controls</code></td><td><code>object</code></td><td><code>layout</code> (<code>"none"</code> أو <code>"dpad"</code> أو <code>"joystick"</code>)، و<code>primary_button</code>، و<code>secondary_button</code>.</td></tr>
+                                    <tr><td><code>native_runtime</code></td><td><code>object</code></td><td><code>library_root</code>، <code>library_name</code>، <code>dependency_root</code>، <code>dependencies</code>، <code>supports_surface_rendering</code>، <code>startup_action</code>.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2>مثال جاهز للنسخ</h2>
+                        <pre><code>{
+  "spec_version": "2.0",
+  "id": "com.developer.smart_tools",
+  "slug": "smart-tools",
+  "name": "أدوات ذكية",
+  "version": "1.0.0",
+  "author": "InstaLink Developer",
+  "description": "أدوات ذكية للمتصفح مبنية عبر InstaLink SDK.",
+  "type": "hosted",
+  "runtime_mode": "hybrid",
+  "permissions": ["inject_scripts", "storage", "instalink_page", "home_entry", "notifications"],
+  "matches": ["&lt;all_urls&gt;"],
+  "content_scripts": ["content.js"],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://com.developer.smart_tools",
+  "icon_path": "icon.svg",
+  "home_entry": {
+    "title": "أدوات ذكية",
+    "target_url": "instalink://com.developer.smart_tools",
+    "accent_hex": "#1a73e8"
+  }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- 5. JS BRIDGE, PERMISSIONS & EXAMPLES (SINGLE PAGE) -->
+                <section id="sec-bridge" class="doc-section" data-tab="api">
+                    <div class="lang-en">
+                        <h1>JS Bridge, Permissions &amp; Extension Examples</h1>
+                        <p>InstaLink automatically injects <code>window.InstaLink</code> into every extension page
+                            (<code>settings.html</code>), immersive web game, and matching content script. This single
+                            page covers the complete Bridge API, all permissions, Android runtime permission prompts,
+                            and ready-to-use extension examples for vibration, microphone recording, notifications,
+                            audio routing, sensors, Bluetooth, and app launching.</p>
+
+                        <div class="callout">
+                            <strong>Initialization Rule:</strong> Always wait until
+                            <code>window.InstaLink &amp;&amp; window.InstaLink.__nativeReady</code> is true and use
+                            <code>window.InstaLinkActiveExtension</code> as your fallback extension ID.
+                        </div>
+
+                        <pre><code>(function waitForBridge(attempt) {
+  if (!(window.InstaLink &amp;&amp; window.InstaLink.__nativeReady)) {
+    if ((attempt || 0) &gt; 60) return console.error("InstaLink bridge unavailable");
+    return setTimeout(function () { waitForBridge((attempt || 0) + 1); }, 80);
+  }
+  const extId = window.InstaLinkActiveExtension || "com.developer.smart_assistant";
+  initExtension(extId);
+})();</code></pre>
+
+                        <h2>1. Permissions Reference</h2>
+                        <p>Every capability in InstaLink follows a clear permission chain before execution:</p>
+                        <ol>
+                            <li><strong>Manifest Declaration:</strong> Add the permission string to the
+                                <code>"permissions"</code> array in <code>manifest.json</code>.</li>
+                            <li><strong>Browser Policy Check:</strong> Call
+                                <code>window.InstaLink.extension.requestPermission(extId, perm)</code> to verify the
+                                user allows this category in InstaLink Browser Settings (<code>allow_device_capabilities</code>,
+                                <code>allow_sensitive_requests</code>, <code>allow_content_scripts</code>, etc.).</li>
+                            <li><strong>Android OS Runtime Prompt:</strong> Permissions backed by Android dangerous
+                                permissions (<code>notifications</code> on Android 13+, <code>microphone</code>,
+                                <code>camera</code>, <code>location</code>, <code>connectivity_info</code> for SSID,
+                                and <code>bluetooth_info</code> on Android 12+) must also be checked and requested with
+                                <code>systemPermissionStatus()</code> and <code>requestSystemPermission()</code>.</li>
+                        </ol>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Permission</th>
+                                        <th>Category &amp; Setting</th>
+                                        <th>Android Runtime Permission</th>
+                                        <th>API / Capability</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inject_scripts</code></td>
+                                        <td>Browser (<code>allow_content_scripts</code>)</td>
+                                        <td>None</td>
+                                        <td>Inject <code>content_scripts</code> and <code>content_styles</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>current_page</code></td>
+                                        <td>Browser (Always allowed if declared)</td>
+                                        <td>None</td>
+                                        <td><code>browser.currentPage()</code> returns <code>{ url, title }</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage</code></td>
+                                        <td>Browser (Always allowed if declared)</td>
+                                        <td>None</td>
+                                        <td><code>storage.get(id, key, def)</code>, <code>storage.set(id, key, val)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>network</code></td>
+                                        <td>Browser (<code>allow_network_access</code>)</td>
+                                        <td>None</td>
+                                        <td>HTTP/HTTPS requests inside extension pages</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>instalink_page</code></td>
+                                        <td>Browser (Always allowed if declared)</td>
+                                        <td>None</td>
+                                        <td>Registers custom <code>instalink://...</code> screen</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>home_entry</code></td>
+                                        <td>Browser (<code>allow_home_entries</code>)</td>
+                                        <td>None</td>
+                                        <td>Shows shortcut tile on browser home screen</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>shortcut</code></td>
+                                        <td>Browser (<code>allow_system_shortcuts</code>)</td>
+                                        <td>None</td>
+                                        <td><code>extension.addHomeShortcut(extId)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>notifications</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>POST_NOTIFICATIONS</code> (Android 13+)</td>
+                                        <td><code>capabilities.notifications.show(extId, { id, title, body })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>text_to_speech</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.tts.status / speak / stop</code> (<code>speech_tts</code>)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device_info</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.invoke(extId, "device_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>connectivity_info</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>ACCESS_FINE_LOCATION</code> (optional, for SSID)</td>
+                                        <td><code>capabilities.invoke(extId, "connectivity_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>bluetooth_info</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>BLUETOOTH_CONNECT</code>, <code>BLUETOOTH_SCAN</code> (Android 12+)</td>
+                                        <td><code>capabilities.invoke(extId, "bluetooth_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>audio_route</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.audioRoute.get / set(extId, route)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>volume_control</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.volume.get / set / adjust</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>vibration</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.invoke(extId, "vibration", "status | vibrate | cancel", ...)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sensors</code></td>
+                                        <td>Capability (<code>allow_sensitive_requests</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.invoke(extId, "sensors", "list | snapshot", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>app_launch</code></td>
+                                        <td>Capability (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>capabilities.invoke(extId, "app_launch", "resolve | launch", { package_name })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>microphone</code></td>
+                                        <td>Hardware (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>RECORD_AUDIO</code></td>
+                                        <td><code>navigator.mediaDevices.getUserMedia({ audio: true })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>camera</code></td>
+                                        <td>Hardware (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>CAMERA</code></td>
+                                        <td><code>navigator.mediaDevices.getUserMedia({ video: true })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>location</code></td>
+                                        <td>Hardware (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>ACCESS_FINE_LOCATION</code></td>
+                                        <td><code>navigator.geolocation</code> and Wi-Fi SSID resolution</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>gestures</code></td>
+                                        <td>System (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td>Browser gesture integration metadata</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>foreground_service</code></td>
+                                        <td>System (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td>Declared for background audio or long-running tasks</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>android_host</code></td>
+                                        <td>Runtime (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td>InstaLink Host runtime integration</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>native_runtime</code></td>
+                                        <td>Runtime (<code>allow_device_capabilities</code>)</td>
+                                        <td>None</td>
+                                        <td><code>nativeRuntime.inspect(extId)</code>, <code>nativeRuntime.invoke(...)</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Reusable Permission Verification Helper</h3>
+                        <p>Include this helper in every extension to verify both Browser Settings and Android OS runtime
+                            permissions cleanly before calling hardware features:</p>
+                        <pre><code>function ensureAccess(extId, permissionName, needsAndroidPrompt) {
+  const allowedByBrowser = window.InstaLink.extension.requestPermission(extId, permissionName);
+  if (!allowedByBrowser) {
+    window.InstaLink.browser.toast("Enable permission in Browser Settings: " + permissionName);
+    return { ok: false, reason: "blocked_by_browser_or_manifest" };
+  }
+
+  if (needsAndroidPrompt) {
+    const status = window.InstaLink.extension.systemPermissionStatus(extId, permissionName);
+    if (status.ok &amp;&amp; status.requires_runtime_prompt) {
+      window.InstaLink.extension.requestSystemPermission(extId, permissionName);
+      return { ok: false, reason: "android_prompt_opened", missing: status.missing_permissions };
+    }
+  }
+  return { ok: true };
+}</code></pre>
+
+                        <h2>2. Core Bridge APIs (<code>browser</code>, <code>storage</code>, <code>extension</code>)</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Method</th>
+                                        <th>Description &amp; Return Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>browser.currentPage()</code></td>
+                                        <td>Returns <code>{ url, title }</code> for the active tab (needs <code>current_page</code>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.bridgeStatus()</code></td>
+                                        <td>Returns <code>{ ready, current_page, settings, installed_extensions }</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.listExtensions()</code></td>
+                                        <td>Returns array of installed extensions including <code>id</code>, <code>permissions</code>, <code>enabled</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.open(url)</code></td>
+                                        <td>Navigates to an external HTTPS URL or <code>instalink://...</code> extension page.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.toast(message)</code></td>
+                                        <td>Shows a short native Android toast message on screen.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage.set(extId, key, val)</code></td>
+                                        <td>Saves any JSON-serializable object persistently for that extension.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage.get(extId, key, fallback)</code></td>
+                                        <td>Reads saved JSON data or returns <code>fallback</code> if absent.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>extension.manifest(extId)</code></td>
+                                        <td>Returns parsed extension manifest metadata and settings link.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>extension.addHomeShortcut(extId)</code></td>
+                                        <td>Pins an Android home-screen launcher shortcut (needs <code>shortcut</code>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>capabilities.list(extId)</code></td>
+                                        <td>Inspects all 10 capabilities with <code>declared</code>, <code>allowed</code>, <code>available</code>, <code>actions</code>, and <code>os_status</code>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2>3. Vibration &amp; Haptics Extension (<code>vibration</code>)</h2>
+                        <p>Control the device vibrator with single pulses from <code>20</code> to <code>5000</code>
+                            milliseconds or build custom haptic sequences in JavaScript. Declare
+                            <code>"vibration"</code> in <code>manifest.json</code>.</p>
+                        <pre><code>// Check hardware capability
+const vibStatus = window.InstaLink.capabilities.invoke(extId, "vibration", "status", {});
+// { ok: true, result: { supported: true, has_amplitude_control: true } }
+
+// Trigger a single haptic pulse (20 to 5000 ms, default 180 ms)
+window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 250 });
+
+// Cancel any ongoing vibration immediately
+window.InstaLink.capabilities.invoke(extId, "vibration", "cancel", {});
+
+// Build a custom pattern sequencer (for example: Double Tap or SOS alert)
+let patternStop = false;
+async function playHapticPattern(extId, pulsesMs) {
+  patternStop = false;
+  for (let i = 0; i &lt; pulsesMs.length; i++) {
+    if (patternStop) break;
+    const step = pulsesMs[i];
+    if (i % 2 === 0) {
+      window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: step });
+    }
+    await new Promise(function (resolve) { setTimeout(resolve, step); });
+  }
+}
+
+// Usage examples:
+// Short button click: playHapticPattern(extId, [50])
+// Double notification buzz: playHapticPattern(extId, [120, 90, 120])
+// SOS sequence: playHapticPattern(extId, [150, 100, 150, 100, 150, 250, 400, 120, 400, 120, 400])</code></pre>
+
+                        <h2>4. Microphone Recorder &amp; Audio Meter Extension (<code>microphone</code>)</h2>
+                        <p>To build a voice memo, sound meter, or voice-triggered extension, declare
+                            <code>"microphone"</code> in <code>manifest.json</code>. The user must allow sensitive
+                            requests in Browser Settings and grant Android's <code>RECORD_AUDIO</code> permission via
+                            <code>requestSystemPermission()</code>. Once granted, standard Web Audio and
+                            <code>MediaRecorder</code> APIs receive real microphone input.</p>
+                        <pre><code>let activeMicStream = null;
+let mediaRecorder = null;
+let audioChunks = [];
+
+async function startMicrophoneRecorder(extId, onLevelUpdate, onClipSaved) {
+  const access = ensureAccess(extId, "microphone", true);
+  if (!access.ok) return access;
+
+  try {
+    activeMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // Haptic tap to confirm recording started
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 80 });
+
+    // Live audio level meter using Web Audio AnalyserNode
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioCtx.createMediaStreamSource(activeMicStream);
+    const analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    source.connect(analyser);
+    const bins = new Uint8Array(analyser.frequencyBinCount);
+
+    function sampleVolume() {
+      if (!activeMicStream) return;
+      analyser.getByteFrequencyData(bins);
+      let sum = 0;
+      for (let i = 0; i &lt; bins.length; i++) sum += bins[i];
+      const levelPercent = Math.min(100, Math.round((sum / bins.length) * 1.4));
+      if (onLevelUpdate) onLevelUpdate(levelPercent);
+      requestAnimationFrame(sampleVolume);
+    }
+    sampleVolume();
+
+    // Record audio clip with MediaRecorder
+    audioChunks = [];
+    mediaRecorder = new MediaRecorder(activeMicStream);
+    mediaRecorder.ondataavailable = function (e) {
+      if (e.data &amp;&amp; e.data.size &gt; 0) audioChunks.push(e.data);
+    };
+    mediaRecorder.onstop = function () {
+      const blob = new Blob(audioChunks, { type: "audio/webm" });
+      window.InstaLink.capabilities.notifications.show(extId, {
+        id: 301,
+        title: "Voice Memo Saved",
+        body: "Recorded " + Math.round(blob.size / 1024) + " KB clip."
+      });
+      if (onClipSaved) onClipSaved(blob);
+    };
+    mediaRecorder.start();
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}
+
+function stopMicrophoneRecorder(extId) {
+  if (mediaRecorder &amp;&amp; mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+  }
+  if (activeMicStream) {
+    activeMicStream.getTracks().forEach(function (track) { track.stop(); });
+    activeMicStream = null;
+  }
+  window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 50 });
+}</code></pre>
+
+                        <h2>5. System Notifications Extension (<code>notifications</code>)</h2>
+                        <p>Send native Android notifications grouped or replaced by numeric <code>id</code>. On Android 13
+                            (API 33+) and newer, verify and prompt for <code>POST_NOTIFICATIONS</code> first.</p>
+                        <pre><code>function sendSmartNotification(extId, notifId, title, body) {
+  const access = ensureAccess(extId, "notifications", true);
+  if (!access.ok) return access;
+
+  return window.InstaLink.capabilities.notifications.show(extId, {
+    id: notifId,
+    title: title,
+    body: body
+  });
+}
+
+// Example 1: Progress update using the same ID so it updates in place
+sendSmartNotification(extId, 201, "Sync Started", "Checking current page links...");
+setTimeout(function () {
+  sendSmartNotification(extId, 201, "Sync Complete", "All 12 links verified cleanly.");
+}, 2000);
+
+// Example 2: Separate alert with a different ID
+sendSmartNotification(extId, 202, "Security Alert", "Microphone was activated.");</code></pre>
+
+                        <h2>6. Volume, Audio Route &amp; Text-to-Speech (<code>volume_control</code>, <code>audio_route</code>, <code>speech_tts</code>)</h2>
+                        <p>Combine volume scaling, loudspeaker or earpiece switching, and native Android speech synthesis
+                            in Arabic or English.</p>
+                        <pre><code>// Read current media volume and device max steps
+const vol = window.InstaLink.capabilities.volume.get(extId);
+// { ok: true, result: { stream: "music", value: 7, max: 15 } }
+
+// Helper to set volume using percentage (0 to 100)
+function setVolumePercent(extId, percent) {
+  const info = window.InstaLink.capabilities.volume.get(extId);
+  if (!info.ok) return info;
+  const targetStep = Math.round((Math.max(0, Math.min(100, percent)) / 100) * info.result.max);
+  return window.InstaLink.capabilities.volume.set(extId, targetStep);
+}
+
+// Step up (+1) or down (-1)
+window.InstaLink.capabilities.volume.adjust(extId, 1);
+
+// Switch audio output route ("speaker", "earpiece", or "default")
+window.InstaLink.capabilities.audioRoute.set(extId, "speaker");
+
+// Warm up TTS engine and speak text
+const ttsState = window.InstaLink.capabilities.tts.status(extId);
+window.InstaLink.capabilities.tts.speak(extId, {
+  text: "Battery and network checks passed.",
+  language: "en-US" // Use "ar" for Arabic speech
+});
+
+// Stop active speech
+// window.InstaLink.capabilities.tts.stop(extId);</code></pre>
+
+                        <h2>7. Hardware Sensors Automation (<code>sensors</code>)</h2>
+                        <p>Inspect available physical sensors (<code>list</code>) and take real-time snapshots
+                            (<code>snapshot</code>) of Proximity, Ambient Light (lux), and Accelerometer
+                            (<code>[x, y, z]</code>). Requires <code>"sensors"</code> permission and
+                            <code>allow_sensitive_requests</code> enabled.</p>
+                        <pre><code>// List all sensors on the device
+const sensorInventory = window.InstaLink.capabilities.invoke(extId, "sensors", "list", {});
+
+// Build a smart pocket / shake / dark-room detector
+function checkEnvironmentSensors(extId) {
+  const snap = window.InstaLink.capabilities.invoke(extId, "sensors", "snapshot", {});
+  if (!snap.ok) return snap;
+
+  const prox = snap.result.proximity;
+  const light = snap.result.light;
+  const accel = snap.result.accelerometer;
+
+  const lux = light.available &amp;&amp; light.values.length ? light.values[0] : null;
+  const dist = prox.available &amp;&amp; prox.values.length ? prox.values[0] : null;
+  const xyz = accel.available &amp;&amp; accel.values.length === 3 ? accel.values : [0, 0, 0];
+  const gForce = Math.sqrt(xyz[0] * xyz[0] + xyz[1] * xyz[1] + xyz[2] * xyz[2]);
+
+  if (lux !== null &amp;&amp; lux &lt; 15) {
+    setVolumePercent(extId, 30); // Lower volume automatically in dark rooms
+  }
+  if (gForce &gt; 15) {
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 120 });
+    window.InstaLink.browser.toast("Shake detected!");
+  }
+  return { lux: lux, proximity: dist, gForce: Number(gForce.toFixed(2)) };
+}</code></pre>
+
+                        <h2>8. Device, Wi-Fi &amp; Bluetooth Diagnostics (<code>device_info</code>, <code>connectivity_info</code>, <code>bluetooth_info</code>)</h2>
+                        <pre><code>function collectDiagnostics(extId) {
+  const device = window.InstaLink.capabilities.invoke(extId, "device_info", "get", {});
+  const network = window.InstaLink.capabilities.invoke(extId, "connectivity_info", "get", {});
+
+  // Bluetooth info requires BLUETOOTH_CONNECT runtime permission on Android 12+
+  const btAccess = ensureAccess(extId, "bluetooth_info", true);
+  const bluetooth = btAccess.ok
+    ? window.InstaLink.capabilities.invoke(extId, "bluetooth_info", "get", {})
+    : { ok: false, pendingPermission: true };
+
+  return {
+    device: device.result || null,
+    transports: network.ok ? network.result.transports : [],
+    wifiSsid: network.ok ? network.result.wifi.ssid : null,
+    connectedHeadsets: bluetooth.ok ? bluetooth.result.connected_devices : []
+  };
+}</code></pre>
+
+                        <h2>9. App Launcher &amp; Website Content Script Example (<code>app_launch</code>, <code>inject_scripts</code>)</h2>
+                        <pre><code>// A. Verify and open another Android app
+function openInstalledApp(extId, pkgName) {
+  const resolved = window.InstaLink.capabilities.invoke(extId, "app_launch", "resolve", {
+    package_name: pkgName
+  });
+  if (resolved.ok &amp;&amp; resolved.result.launchable) {
+    return window.InstaLink.capabilities.invoke(extId, "app_launch", "launch", {
+      package_name: pkgName
+    });
+  }
+  window.InstaLink.browser.toast("App not installed: " + pkgName);
+  return { ok: false };
+}
+
+// B. Floating Action Bar inside Content Script (index.js on every website)
+(function injectFloatingControlBar() {
+  if (!window.InstaLink || !window.InstaLink.__nativeReady) return;
+  if (document.getElementById("instalink-quick-bar")) return;
+  const extId = window.InstaLinkActiveExtension;
+
+  const bar = document.createElement("div");
+  bar.id = "instalink-quick-bar";
+  bar.style.cssText = "position:fixed;bottom:16px;right:16px;z-index:999999;display:flex;gap:8px;background:#111;color:#fff;padding:8px 12px;border-radius:10px;font-family:sans-serif;font-size:13px;";
+
+  const btnSpeak = document.createElement("button");
+  btnSpeak.textContent = "Read Page";
+  btnSpeak.onclick = function () {
+    const page = window.InstaLink.browser.currentPage();
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 45 });
+    window.InstaLink.capabilities.tts.speak(extId, { text: page.title || page.url, language: "en-US" });
+  };
+
+  const btnNotify = document.createElement("button");
+  btnNotify.textContent = "Pin Alert";
+  btnNotify.onclick = function () {
+    const page = window.InstaLink.browser.currentPage();
+    window.InstaLink.capabilities.notifications.show(extId, {
+      id: 404,
+      title: "Saved Page",
+      body: page.title || page.url
+    });
+  };
+
+  bar.appendChild(btnSpeak);
+  bar.appendChild(btnNotify);
+  document.body.appendChild(bar);
+})();</code></pre>
+
+                        <h2>10. Complete Hardware Control Extension Package (2019 Layout)</h2>
+                        <p>Combine all capabilities above into one installable extension dashboard package:</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>File</th>
+                                        <th>Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>device-control-panel/manifest.json</code></td>
+                                        <td>Extension ID, version, declared permissions, and <code>instalink://</code> route</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/icon.svg</code></td>
+                                        <td>Extension icon (128x128 SVG)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/settings.html</code></td>
+                                        <td>Interactive dashboard UI for vibration, mic, notifications, volume, and sensors</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/panel.js</code></td>
+                                        <td>Bridge initialization, permission checker, and capability handlers</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <pre><code>{
+  "id": "com.developer.device_panel",
+  "slug": "device-control-panel",
+  "name": "Device Control Panel",
+  "version": "1.0.0",
+  "author": "InstaLink Developer",
+  "description": "Control vibration patterns, microphone meter, notifications, volume, TTS, and sensors.",
+  "type": "hosted",
+  "runtime_mode": "hybrid",
+  "permissions": [
+    "current_page",
+    "storage",
+    "instalink_page",
+    "home_entry",
+    "shortcut",
+    "vibration",
+    "microphone",
+    "notifications",
+    "text_to_speech",
+    "audio_route",
+    "volume_control",
+    "sensors",
+    "device_info",
+    "connectivity_info",
+    "bluetooth_info",
+    "app_launch"
+  ],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://com.developer.device_panel",
+  "icon_path": "icon.svg",
+  "home_entry": {
+    "title": "Device Panel",
+    "target_url": "instalink://com.developer.device_panel",
+    "accent_hex": "#1a73e8"
+  }
+}</code></pre>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>جسر البرمجة، الصلاحيات، وأمثلة بناء الإضافات</h1>
+                        <p>يتم حقن كائن <code>window.InstaLink</code> تلقائيا داخل صفحة الإضافة
+                            (<code>settings.html</code>) والألعاب المدمجة وسكربتات الصفحات. تجمع هذه الصفحة المرجع الكامل
+                            لكل الصلاحيات، ودوال جسر JavaScript، وأمثلة عملية كاملة لبناء إضافات تتحكم بالاهتزاز
+                            والميكروفون والإشعارات ومستوى الصوت وتوجيه السماعة والحساسات والبلوتوث وفتح التطبيقات.</p>
+
+                        <div class="callout">
+                            <strong>قاعدة التشغيل السليم:</strong> تحقق دائما من جاهزية الجسر عبر
+                            <code>window.InstaLink &amp;&amp; window.InstaLink.__nativeReady</code> واستخدم
+                            <code>window.InstaLinkActiveExtension</code> كمعرّف للإضافة.
+                        </div>
+
+                        <pre><code>(function waitForBridge(attempt) {
+  if (!(window.InstaLink &amp;&amp; window.InstaLink.__nativeReady)) {
+    if ((attempt || 0) &gt; 60) return console.error("الجسر غير متاح");
+    return setTimeout(function () { waitForBridge((attempt || 0) + 1); }, 80);
+  }
+  const extId = window.InstaLinkActiveExtension || "com.developer.smart_assistant";
+  initExtension(extId);
+})();</code></pre>
+
+                        <h2>1. الصلاحيات</h2>
+                        <p>تمر كل قدرة في InstaLink بثلاث خطوات واضحة قبل التنفيذ لضمان الأمان وموافقة المستخدم:</p>
+                        <ol>
+                            <li><strong>الإعلان داخل الملف التعريفي:</strong> أضف اسم الصلاحية في مصفوفة
+                                <code>"permissions"</code> داخل <code>manifest.json</code>.</li>
+                            <li><strong>فحص إعدادات المتصفح:</strong> استدعِ
+                                <code>window.InstaLink.extension.requestPermission(extId, perm)</code> للتأكد من تفعيل
+                                الفئة في إعدادات المتصفح (<code>allow_device_capabilities</code> أو
+                                <code>allow_sensitive_requests</code> وغيرها).</li>
+                            <li><strong>صلاحيات نظام أندرويد الفعلية:</strong> الصلاحيات الحساسة على مستوى النظام
+                                (<code>notifications</code> على أندرويد 13 وما فوق، و<code>microphone</code>،
+                                و<code>camera</code>، و<code>location</code>، و<code>connectivity_info</code> لاسم الشبكة،
+                                و<code>bluetooth_info</code> على أندرويد 12 وما فوق) يتم فحصها وطلبها عبر
+                                <code>systemPermissionStatus()</code> و<code>requestSystemPermission()</code>.</li>
+                        </ol>
+
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>الصلاحية</th>
+                                        <th>التصنيف وإعداد المتصفح</th>
+                                        <th>صلاحية أندرويد الفعلية</th>
+                                        <th>الواجهة أو القدرة المرتبطة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>inject_scripts</code></td>
+                                        <td>المتصفح (<code>allow_content_scripts</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>حقن ملفات <code>content_scripts</code> و<code>content_styles</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>current_page</code></td>
+                                        <td>المتصفح (تُمنح بمجرد الإعلان)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>browser.currentPage()</code> لقراءة <code>{ url, title }</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage</code></td>
+                                        <td>المتصفح (تُمنح بمجرد الإعلان)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>storage.get(id, key, def)</code> و<code>storage.set(id, key, val)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>network</code></td>
+                                        <td>المتصفح (<code>allow_network_access</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>اتصالات الشبكة من داخل واجهات الإضافة</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>instalink_page</code></td>
+                                        <td>المتصفح (تُمنح بمجرد الإعلان)</td>
+                                        <td>لا توجد</td>
+                                        <td>إنشاء شاشة داخلية على رابط <code>instalink://...</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>home_entry</code></td>
+                                        <td>المتصفح (<code>allow_home_entries</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>إظهار بطاقة اختصار في الشاشة الرئيسية للمتصفح</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>shortcut</code></td>
+                                        <td>المتصفح (<code>allow_system_shortcuts</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>extension.addHomeShortcut(extId)</code> لتثبيت اختصار النظام</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>notifications</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>POST_NOTIFICATIONS</code> (أندرويد 13+)</td>
+                                        <td><code>capabilities.notifications.show(extId, { id, title, body })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>text_to_speech</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.tts.status / speak / stop</code> (<code>speech_tts</code>)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device_info</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.invoke(extId, "device_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>connectivity_info</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>ACCESS_FINE_LOCATION</code> (اختياري لاسم Wi-Fi)</td>
+                                        <td><code>capabilities.invoke(extId, "connectivity_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>bluetooth_info</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td><code>BLUETOOTH_CONNECT</code>, <code>BLUETOOTH_SCAN</code> (أندرويد 12+)</td>
+                                        <td><code>capabilities.invoke(extId, "bluetooth_info", "get", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>audio_route</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.audioRoute.get / set(extId, route)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>volume_control</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.volume.get / set / adjust</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>vibration</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.invoke(extId, "vibration", "status | vibrate | cancel", ...)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sensors</code></td>
+                                        <td>القدرات (<code>allow_sensitive_requests</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.invoke(extId, "sensors", "list | snapshot", {})</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>app_launch</code></td>
+                                        <td>القدرات (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>capabilities.invoke(extId, "app_launch", "resolve | launch", { package_name })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>microphone</code></td>
+                                        <td>العتاد (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>RECORD_AUDIO</code></td>
+                                        <td><code>navigator.mediaDevices.getUserMedia({ audio: true })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>camera</code></td>
+                                        <td>العتاد (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>CAMERA</code></td>
+                                        <td><code>navigator.mediaDevices.getUserMedia({ video: true })</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>location</code></td>
+                                        <td>العتاد (<code>allow_sensitive_requests</code>)</td>
+                                        <td><code>ACCESS_FINE_LOCATION</code></td>
+                                        <td><code>navigator.geolocation</code> وقراءة اسم شبكة Wi-Fi</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>gestures</code></td>
+                                        <td>النظام (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>التكامل مع إيماءات المتصفح</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>foreground_service</code></td>
+                                        <td>النظام (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>مخصصة لإضافات الصوت والمهام الطويلة</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>android_host</code></td>
+                                        <td>التشغيل (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td>التكامل مع المضيف الوسيط في InstaLink</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>native_runtime</code></td>
+                                        <td>التشغيل (<code>allow_device_capabilities</code>)</td>
+                                        <td>لا توجد</td>
+                                        <td><code>nativeRuntime.inspect(extId)</code> و<code>nativeRuntime.invoke(...)</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>دالة موحدة للتحقق من الصلاحيات قبل الاستخدام</h3>
+                        <p>ضع هذه الدالة في كل إضافة لفحص سماح المتصفح ثم طلب موافقة نظام أندرويد تلقائيا عند الحاجة:</p>
+                        <pre><code>function ensureAccess(extId, permissionName, needsAndroidPrompt) {
+  const allowedByBrowser = window.InstaLink.extension.requestPermission(extId, permissionName);
+  if (!allowedByBrowser) {
+    window.InstaLink.browser.toast("يرجى تفعيل الصلاحية من إعدادات المتصفح: " + permissionName);
+    return { ok: false, reason: "blocked_by_browser_or_manifest" };
+  }
+
+  if (needsAndroidPrompt) {
+    const status = window.InstaLink.extension.systemPermissionStatus(extId, permissionName);
+    if (status.ok &amp;&amp; status.requires_runtime_prompt) {
+      window.InstaLink.extension.requestSystemPermission(extId, permissionName);
+      return { ok: false, reason: "android_prompt_opened", missing: status.missing_permissions };
+    }
+  }
+  return { ok: true };
+}</code></pre>
+
+                        <h2>2. الدوال الأساسية للجسر (<code>browser</code> و<code>storage</code> و<code>extension</code>)</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>الدالة</th>
+                                        <th>الوظيفة والقيمة العائدة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>browser.currentPage()</code></td>
+                                        <td>تعيد <code>{ url, title }</code> للصفحة المفتوحة حاليا (تتطلب <code>current_page</code>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.bridgeStatus()</code></td>
+                                        <td>تعيد حالة الجسر وإعدادات المتصفح الحالية وعدد الإضافات المثبتة.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.listExtensions()</code></td>
+                                        <td>تعيد مصفوفة بكل الإضافات المثبتة وحالة تفعيلها <code>enabled</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.open(url)</code></td>
+                                        <td>تفتح رابط موقع خارجي أو صفحة داخلية مثل <code>instalink://...</code>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>browser.toast(message)</code></td>
+                                        <td>تعرض رسالة Toast سريعة على شاشة الهاتف.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage.set(extId, key, val)</code></td>
+                                        <td>تحفظ بيانات JSON بشكل دائم خاص بالإضافة.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>storage.get(extId, key, fallback)</code></td>
+                                        <td>تسترجع البيانات المحفوظة أو تعيد <code>fallback</code> عند عدم وجودها.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>extension.manifest(extId)</code></td>
+                                        <td>تعيد بيانات الملف التعريفي للإضافة ورابط صفحتها.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>extension.addHomeShortcut(extId)</code></td>
+                                        <td>تضيف أيقونة اختصار للإضافة على الشاشة الرئيسية للهاتف (تتطلب <code>shortcut</code>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>capabilities.list(extId)</code></td>
+                                        <td>تعرض حالة القدرات العشر: <code>declared</code> و<code>allowed</code> و<code>available</code> و<code>os_status</code>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h2>3. مثال إضافة التحكم في الاهتزاز والأنماط التفاعلية (<code>vibration</code>)</h2>
+                        <p>يمكنك تشغيل الاهتزاز لمدة من <code>20</code> إلى <code>5000</code> مللي ثانية، أو إيقافه فورا،
+                            أو بناء أنماط اهتزاز متكررة عبر JavaScript (مثل اهتزاز النقر السريع أو نبض مزدوج أو إشارة
+                            تنبيه). أضف <code>"vibration"</code> في <code>manifest.json</code>.</p>
+                        <pre><code>// فحص دعم الهزاز والتحكم في القوة
+const vibStatus = window.InstaLink.capabilities.invoke(extId, "vibration", "status", {});
+// تعيد: { ok: true, result: { supported: true, has_amplitude_control: true } }
+
+// تشغيل اهتزاز منفرد (المدة المسموحة من 20 إلى 5000 مللي ثانية)
+window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 250 });
+
+// إيقاف الاهتزاز الجاري فورا
+window.InstaLink.capabilities.invoke(extId, "vibration", "cancel", {});
+
+// صانع أنماط الاهتزاز المتتالية (الرقم الزوجي مدة الاهتزاز، الفردي مدة السكون)
+let patternStop = false;
+async function playHapticPattern(extId, pulsesMs) {
+  patternStop = false;
+  for (let i = 0; i &lt; pulsesMs.length; i++) {
+    if (patternStop) break;
+    const step = pulsesMs[i];
+    if (i % 2 === 0) {
+      window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: step });
+    }
+    await new Promise(function (resolve) { setTimeout(resolve, step); });
+  }
+}
+
+// أمثلة تشغيل جاهزة:
+// نقرة خفيفة للأزرار: playHapticPattern(extId, [50])
+// نبضة مزدوجة للتنبيه: playHapticPattern(extId, [120, 90, 120])
+// نمط طوارئ SOS: playHapticPattern(extId, [150, 100, 150, 100, 150, 250, 400, 120, 400, 120, 400])</code></pre>
+
+                        <h2>4. مثال إضافة تسجيل الميكروفون وقياس شدة الصوت (<code>microphone</code>)</h2>
+                        <p>لبناء إضافة مسجل صوتي أو مراقب لشدة الصوت من الميكروفون، أعلن عن <code>"microphone"</code>
+                            في <code>manifest.json</code>، وتأكد من تفعيل خيار الطلبات الحساسة في المتصفح ثم اطلب صلاحية
+                            أندرويد <code>RECORD_AUDIO</code> عبر <code>requestSystemPermission()</code>. بعد الموافقة
+                            يعمل <code>getUserMedia</code> و<code>MediaRecorder</code> مباشرة داخل صفحة الإضافة.</p>
+                        <pre><code>let activeMicStream = null;
+let mediaRecorder = null;
+let audioChunks = [];
+
+async function startMicrophoneRecorder(extId, onLevelUpdate, onClipSaved) {
+  const access = ensureAccess(extId, "microphone", true);
+  if (!access.ok) return access;
+
+  try {
+    activeMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // اهتزاز خفيف عند بدء التسجيل
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 80 });
+
+    // قياس مستوى الصوت اللحظي عبر Web Audio API
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioCtx.createMediaStreamSource(activeMicStream);
+    const analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    source.connect(analyser);
+    const bins = new Uint8Array(analyser.frequencyBinCount);
+
+    function sampleVolume() {
+      if (!activeMicStream) return;
+      analyser.getByteFrequencyData(bins);
+      let sum = 0;
+      for (let i = 0; i &lt; bins.length; i++) sum += bins[i];
+      const levelPercent = Math.min(100, Math.round((sum / bins.length) * 1.4));
+      if (onLevelUpdate) onLevelUpdate(levelPercent);
+      requestAnimationFrame(sampleVolume);
+    }
+    sampleVolume();
+
+    // تسجيل المقطع الصوتي عبر MediaRecorder
+    audioChunks = [];
+    mediaRecorder = new MediaRecorder(activeMicStream);
+    mediaRecorder.ondataavailable = function (e) {
+      if (e.data &amp;&amp; e.data.size &gt; 0) audioChunks.push(e.data);
+    };
+    mediaRecorder.onstop = function () {
+      const blob = new Blob(audioChunks, { type: "audio/webm" });
+      window.InstaLink.capabilities.notifications.show(extId, {
+        id: 301,
+        title: "تم حفظ التسجيل الصوتي",
+        body: "حجم المقطع المسجل: " + Math.round(blob.size / 1024) + " كيلوبايت."
+      });
+      if (onClipSaved) onClipSaved(blob);
+    };
+    mediaRecorder.start();
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}
+
+function stopMicrophoneRecorder(extId) {
+  if (mediaRecorder &amp;&amp; mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+  }
+  if (activeMicStream) {
+    activeMicStream.getTracks().forEach(function (track) { track.stop(); });
+    activeMicStream = null;
+  }
+  window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 50 });
+}</code></pre>
+
+                        <h2>5. مثال إضافة الإشعارات وتحديث حالتها (<code>notifications</code>)</h2>
+                        <p>تسمح قدرة الإشعارات بإرسال تنبيهات أندرويد حقيقية وتحديث نفس الإشعار عند استخدام نفس رقم
+                            المعرّف <code>id</code>. على أندرويد 13 وما فوق يجب طلب صلاحية
+                            <code>POST_NOTIFICATIONS</code> أولا عبر <code>requestSystemPermission()</code>.</p>
+                        <pre><code>function sendSmartNotification(extId, notifId, title, body) {
+  const access = ensureAccess(extId, "notifications", true);
+  if (!access.ok) return access;
+
+  return window.InstaLink.capabilities.notifications.show(extId, {
+    id: notifId,
+    title: title,
+    body: body
+  });
+}
+
+// مثال 1: تحديث نفس الإشعار باستخدام نفس المعرف id = 201
+sendSmartNotification(extId, 201, "بدء الفحص", "جاري تحليل روابط الصفحة الحالية...");
+setTimeout(function () {
+  sendSmartNotification(extId, 201, "اكتمل الفحص", "تم التحقق من 12 رابط بنجاح.");
+}, 2000);
+
+// مثال 2: إرسال إشعار مستقل بمعرف آخر id = 202
+sendSmartNotification(extId, 202, "تنبيه أمان", "تم تفعيل الميكروفون داخل الإضافة.");</code></pre>
+
+                        <h2>6. الصوت والتوجيه والنطق الآلي (<code>volume_control</code> و<code>audio_route</code> و<code>speech_tts</code>)</h2>
+                        <p>تحكم في درجة صوت الوسائط، بدّل مخرج الصوت بين السماعة الخارجية وسماعة الأذن، وشغّل النطق
+                            العربي أو الإنجليزي عبر محرك النظام.</p>
+                        <pre><code>// معرفة مستوى الصوت الحالي والحد الأقصى للجهاز
+const vol = window.InstaLink.capabilities.volume.get(extId);
+// الناتج: { ok: true, result: { stream: "music", value: 7, max: 15 } }
+
+// دالة لضبط الصوت بالنسبة المئوية من 0 إلى 100
+function setVolumePercent(extId, percent) {
+  const info = window.InstaLink.capabilities.volume.get(extId);
+  if (!info.ok) return info;
+  const targetStep = Math.round((Math.max(0, Math.min(100, percent)) / 100) * info.result.max);
+  return window.InstaLink.capabilities.volume.set(extId, targetStep);
+}
+
+// رفع أو خفض الصوت خطوة واحدة
+window.InstaLink.capabilities.volume.adjust(extId, 1);
+
+// توجيه مخرج الصوت ("speaker" أو "earpiece" أو "default")
+window.InstaLink.capabilities.audioRoute.set(extId, "speaker");
+
+// فحص جاهزية محرك النطق ثم قراءة النص
+const ttsState = window.InstaLink.capabilities.tts.status(extId);
+window.InstaLink.capabilities.tts.speak(extId, {
+  text: "مرحبا بك، جميع فحوصات النظام تعمل بنجاح.",
+  language: "ar" // أو "en-US"
+});
+
+// إيقاف النطق الحالي
+// window.InstaLink.capabilities.tts.stop(extId);</code></pre>
+
+                        <h2>7. مثال إضافة الحساسات والوضع الليلي التلقائي (<code>sensors</code>)</h2>
+                        <p>اعرض قائمة كل الحساسات الفيزيائية في الهاتف أو خذ قراءة لحظية لحساس القرب والإضاءة (Lux)
+                            والتسارع (X, Y, Z). تتطلب صلاحية <code>"sensors"</code> وتفعيل الطلبات الحساسة.</p>
+                        <pre><code>// قائمة الحساسات المتوفرة على الجهاز
+const sensorInventory = window.InstaLink.capabilities.invoke(extId, "sensors", "list", {});
+
+// مثال مراقبة الإضاءة واهتزاز اليد (Shake)
+function checkEnvironmentSensors(extId) {
+  const snap = window.InstaLink.capabilities.invoke(extId, "sensors", "snapshot", {});
+  if (!snap.ok) return snap;
+
+  const prox = snap.result.proximity;
+  const light = snap.result.light;
+  const accel = snap.result.accelerometer;
+
+  const lux = light.available &amp;&amp; light.values.length ? light.values[0] : null;
+  const dist = prox.available &amp;&amp; prox.values.length ? prox.values[0] : null;
+  const xyz = accel.available &amp;&amp; accel.values.length === 3 ? accel.values : [0, 0, 0];
+  const gForce = Math.sqrt(xyz[0] * xyz[0] + xyz[1] * xyz[1] + xyz[2] * xyz[2]);
+
+  if (lux !== null &amp;&amp; lux &lt; 15) {
+    setVolumePercent(extId, 30); // خفض الصوت تلقائيا في الغرف المظلمة
+  }
+  if (gForce &gt; 15) {
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 120 });
+    window.InstaLink.browser.toast("تم اكتشاف هزة قوية للهاتف!");
+  }
+  return { lux: lux, proximity: dist, gForce: Number(gForce.toFixed(2)) };
+}</code></pre>
+
+                        <h2>8. فحص الجهاز والواي فاي والبلوتوث (<code>device_info</code> و<code>connectivity_info</code> و<code>bluetooth_info</code>)</h2>
+                        <pre><code>function collectDiagnostics(extId) {
+  const device = window.InstaLink.capabilities.invoke(extId, "device_info", "get", {});
+  const network = window.InstaLink.capabilities.invoke(extId, "connectivity_info", "get", {});
+
+  // يتطلب البلوتوث صلاحية BLUETOOTH_CONNECT على أندرويد 12 وما فوق
+  const btAccess = ensureAccess(extId, "bluetooth_info", true);
+  const bluetooth = btAccess.ok
+    ? window.InstaLink.capabilities.invoke(extId, "bluetooth_info", "get", {})
+    : { ok: false, pendingPermission: true };
+
+  return {
+    device: device.result || null,
+    transports: network.ok ? network.result.transports : [],
+    wifiSsid: network.ok ? network.result.wifi.ssid : null,
+    connectedHeadsets: bluetooth.ok ? bluetooth.result.connected_devices : []
+  };
+}</code></pre>
+
+                        <h2>9. فتح التطبيقات وشريط تحكم داخل صفحات الويب (<code>app_launch</code> و<code>inject_scripts</code>)</h2>
+                        <pre><code>// أ. التحقق من وجود تطبيق ثم فتحه عبر package_name
+function openInstalledApp(extId, pkgName) {
+  const resolved = window.InstaLink.capabilities.invoke(extId, "app_launch", "resolve", {
+    package_name: pkgName
+  });
+  if (resolved.ok &amp;&amp; resolved.result.launchable) {
+    return window.InstaLink.capabilities.invoke(extId, "app_launch", "launch", {
+      package_name: pkgName
+    });
+  }
+  window.InstaLink.browser.toast("التطبيق غير مثبت: " + pkgName);
+  return { ok: false };
+}
+
+// ب. شريط أزرار عائم يُحقن في أي موقع ويب عبر Content Script (index.js)
+(function injectFloatingControlBar() {
+  if (!window.InstaLink || !window.InstaLink.__nativeReady) return;
+  if (document.getElementById("instalink-quick-bar")) return;
+  const extId = window.InstaLinkActiveExtension;
+
+  const bar = document.createElement("div");
+  bar.id = "instalink-quick-bar";
+  bar.style.cssText = "position:fixed;bottom:16px;right:16px;z-index:999999;display:flex;gap:8px;background:#111;color:#fff;padding:8px 12px;border-radius:10px;font-family:sans-serif;font-size:13px;";
+
+  const btnSpeak = document.createElement("button");
+  btnSpeak.textContent = "اقرأ الصفحة";
+  btnSpeak.onclick = function () {
+    const page = window.InstaLink.browser.currentPage();
+    window.InstaLink.capabilities.invoke(extId, "vibration", "vibrate", { duration_ms: 45 });
+    window.InstaLink.capabilities.tts.speak(extId, { text: page.title || page.url, language: "ar" });
+  };
+
+  const btnNotify = document.createElement("button");
+  btnNotify.textContent = "حفظ كإشعار";
+  btnNotify.onclick = function () {
+    const page = window.InstaLink.browser.currentPage();
+    window.InstaLink.capabilities.notifications.show(extId, {
+      id: 404,
+      title: "صفحة محفوظة",
+      body: page.title || page.url
+    });
+  };
+
+  bar.appendChild(btnSpeak);
+  bar.appendChild(btnNotify);
+  document.body.appendChild(bar);
+})();</code></pre>
+
+                        <h2>10. نموذج إضافة متكاملة للتحكم بجميع القدرات (هيكل 2019)</h2>
+                        <p>يمكنك دمج كل الأمثلة السابقة في إضافة لوحة تحكم شاملة عبر تقسيم الملفات التالي:</p>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>المسار</th>
+                                        <th>الوظيفة</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>device-control-panel/manifest.json</code></td>
+                                        <td>معرّف الإضافة، الصلاحيات، ورابط <code>instalink://</code> الداخلي</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/icon.svg</code></td>
+                                        <td>أيقونة الإضافة (مقاس 128x128 SVG)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/settings.html</code></td>
+                                        <td>واجهة التحكم بالاهتزاز، الميكروفون، الإشعارات، الصوت، والحساسات</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>device-control-panel/panel.js</code></td>
+                                        <td>تهيئة الجسر، فحص الصلاحيات، وتشغيل كل قدرات العتاد</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <pre><code>{
+  "id": "com.developer.device_panel",
+  "slug": "device-control-panel",
+  "name": "لوحة التحكم بالعتاد",
+  "version": "1.0.0",
+  "author": "InstaLink Developer",
+  "description": "إضافة متكاملة للتحكم في الاهتزاز والميكروفون والإشعارات والصوت والحساسات.",
+  "type": "hosted",
+  "runtime_mode": "hybrid",
+  "permissions": [
+    "current_page",
+    "storage",
+    "instalink_page",
+    "home_entry",
+    "shortcut",
+    "vibration",
+    "microphone",
+    "notifications",
+    "text_to_speech",
+    "audio_route",
+    "volume_control",
+    "sensors",
+    "device_info",
+    "connectivity_info",
+    "bluetooth_info",
+    "app_launch"
+  ],
+  "settings_page": "settings.html",
+  "settings_instalink": "instalink://com.developer.device_panel",
+  "icon_path": "icon.svg",
+  "home_entry": {
+    "title": "لوحة العتاد",
+    "target_url": "instalink://com.developer.device_panel",
+    "accent_hex": "#1a73e8"
+  }
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- 7. NATIVE C++ -->
+                <section id="sec-native" class="doc-section" data-tab="api">
+                    <div class="lang-en">
+                        <h1>Native C++ Extensions &amp; C ABI (AI, TTS, DSP)</h1>
+                        <p>Build high-performance native C++ adapters compiled into <code>.so</code> libraries for
+                            offline AI models (such as <strong>Sherpa-ONNX TTS</strong>), signal processing, or custom
+                            engines. Always include <code>include/instalink_extension_api.h</code>.</p>
+
+                        <h2>1. Full C++ Adapter Example (<code>native/adapter.cpp</code>)</h2>
+                        <p>Every JSON string returned by <code>describe()</code> or <code>invoke()</code> must be
+                            heap-allocated (e.g., <code>malloc</code>/<code>memcpy</code>) so the InstaLink host can
+                            safely free it via <code>instalink_extension_free_string()</code>.</p>
+                        <pre><code>#include "instalink_extension_api.h"
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+
+static std::string g_runtime_root;
+
+static const char* DupJson(const std::string&amp; s) {
+    char* buf = static_cast&lt;char*&gt;(std::malloc(s.size() + 1));
+    if (buf) std::memcpy(buf, s.c_str(), s.size() + 1);
+    return buf;
+}
+
+extern "C" {
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_on_load(const char* runtime_root) {
+    g_runtime_root = runtime_root ? runtime_root : "";
+    // Load ONNX / TTS models from g_runtime_root + "/runtime_bundle/models/..."
+}
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_on_unload() {
+    g_runtime_root.clear();
+}
+
+INSTALINK_EXTENSION_EXPORT const char* instalink_extension_describe() {
+    return DupJson(R"({"ok":true,"adapter":"smart_native_adapter","api_version":2,"actions":["inspect","echo","process"]})");
+}
+
+INSTALINK_EXTENSION_EXPORT const char* instalink_extension_invoke(const char* action, const char* payload_json) {
+    std::string act = action ? action : "";
+    std::string body = payload_json ? payload_json : "{}";
+    if (act == "echo") {
+        return DupJson(std::string("{\"ok\":true,\"root\":\"") + g_runtime_root + "\",\"payload\":" + body + "}");
+    }
+    return DupJson("{\"ok\":true,\"status\":\"completed\"}");
+}
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_free_string(const char* value) {
+    std::free(const_cast&lt;char*&gt;(value));
+}
+
+}</code></pre>
+
+                        <h2>2. CMakeLists.txt &amp; Symbol Visibility (<code>export.map</code>)</h2>
+                        <pre><code>cmake_minimum_required(VERSION 3.22.1)
+project(smart_native_adapter LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+
+add_library(smart_native_adapter SHARED adapter.cpp)
+target_include_directories(smart_native_adapter PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(smart_native_adapter log)
+target_link_options(smart_native_adapter PRIVATE "-Wl,-z,max-page-size=16384")</code></pre>
+                        <p>Note: Linking with <code>-Wl,-z,max-page-size=16384</code> keeps your <code>.so</code>
+                            compatible with Android 15+ 16KB page-size devices.</p>
+
+                        <h2>3. Offline Neural TTS (Sherpa-ONNX Example) &amp; Audio Playback</h2>
+                        <p>Check <code>templates/native_sherpa_tts/</code> in InstaLink SDK for a complete production
+                            example. It loads VITS <code>.onnx</code> models from <code>runtime_bundle/models/</code>,
+                            declares shared library dependencies in <code>manifest.json</code>, writes synthesized WAV
+                            output inside the extension directory, and plays it in HTML5 <code>&lt;audio&gt;</code>:</p>
+                        <pre><code>// 1. Inspect loaded .so adapter &amp; ABI details
+const inspect = window.InstaLink.nativeRuntime.inspect(extId);
+
+// 2. Initialize C++ Sherpa-ONNX model with relative paths resolved against runtime_root
+window.InstaLink.nativeRuntime.invoke(extId, "init", {
+  model_path: "runtime_bundle/models/ar_JO-kareem-low.onnx",
+  tokens: "runtime_bundle/models/tokens.txt",
+  data_dir: "runtime_bundle/models/espeak-ng-data",
+  num_threads: 2
+});
+
+// 3. Synthesize speech WAV &amp; play inside settings.html
+const res = window.InstaLink.nativeRuntime.invoke(extId, "synthesize", {
+  text: "مرحبا بكم في المتصفح",
+  speaker_id: 0,
+  speed: 1.0,
+  output_path: "cache/tts_output.wav"
+});
+if (res.ok &amp;&amp; res.audio_path) {
+  audioPlayer.src = "file://" + encodeURI(res.audio_path.replace(/\\/g, "/")) + "?v=" + Date.now();
+  audioPlayer.play();
+}</code></pre>
+
+                        <h2>4. Native Project Files &amp; Symbol Visibility (<code>export.map</code>)</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>Path / Folder</th><th>Shipped in Archive?</th><th>Purpose</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>native/CMakeLists.txt</code>, <code>adapter.cpp</code>, <code>export.map</code></td><td>No (Source)</td><td>C++ source and CMake build configuration</td></tr>
+                                    <tr><td><code>runtime_bundle/adapters/&lt;abi&gt;/</code></td><td>Yes</td><td>Compiled <code>.so</code> adapters for <code>arm64-v8a</code>, <code>armeabi-v7a</code>, and <code>x86_64</code></td></tr>
+                                    <tr><td><code>runtime_bundle/jniLibs/&lt;abi&gt;/</code></td><td>Yes</td><td>Shared library dependencies loaded before your adapter (e.g. <code>libc++_shared.so</code>, <code>libonnxruntime.so</code>)</td></tr>
+                                    <tr><td><code>runtime_bundle/models/</code></td><td>Yes</td><td>Offline AI/TTS model files (e.g. <code>ar_JO-kareem-low.onnx</code>, <code>tokens.txt</code>, <code>espeak-ng-data</code>)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>Add an <code>export.map</code> version script so only the required InstaLink C ABI symbols are exported (plus the 4 game hooks if building a native game):</p>
+                        <pre><code>{
+  global:
+    instalink_extension_on_load;
+    instalink_extension_on_unload;
+    instalink_extension_describe;
+    instalink_extension_invoke;
+    instalink_extension_free_string;
+  local: *;
+};</code></pre>
+                        <h3>JSON Escaping &amp; C++ Logcat Helpers</h3>
+                        <pre><code>#include &lt;android/log.h&gt;
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "MyAdapter", __VA_ARGS__)
+
+static std::string EscapeJson(const std::string&amp; value) {
+    std::string out;
+    for (char ch : value) {
+        if (ch == '\\') out += "\\\\";
+        else if (ch == '"') out += "\\\"";
+        else if (ch == '\n') out += "\\n";
+        else out += ch;
+    }
+    return out;
+}</code></pre>
+
+                        <h2>5. Manifest &amp; Build Command</h2>
+                        <pre><code>"permissions": ["storage", "instalink_page", "home_entry", "native_runtime"],
+"native_runtime": {
+  "library_root": "runtime_bundle/adapters",
+  "library_name": "libsmart_native_adapter.so",
+  "dependency_root": "runtime_bundle/jniLibs",
+  "dependencies": ["libc++_shared.so"],
+  "supports_surface_rendering": false,
+  "startup_action": "init"
+}</code></pre>
+                        <pre><code># Compiles arm64-v8a + armeabi-v7a + x86_64, checks C ABI symbols with llvm-readelf
+tools\build-native.bat .\my-native-extension</code></pre>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>إضافات C++ الأصلية وواجهة C ABI (الذكاء الاصطناعي وTTS)</h1>
+                        <p>تتيح إضافات C++ بناء وحدات سريعة بصيغة <code>.so</code> لتشغيل نماذج الذكاء الاصطناعي أو
+                            الصوتيات بدون إنترنت (مثل قالب <strong>Sherpa-ONNX TTS</strong> المرفق) أو معالجة البيانات
+                            الثقيلة، عبر ترويسة <code>include/instalink_extension_api.h</code>.</p>
+
+                        <h2>1. كود C++ متكامل (<code>native/adapter.cpp</code>)</h2>
+                        <p>كل نص JSON يعود من <code>describe()</code> أو <code>invoke()</code> يجب تخصيصه في الذاكرة
+                            (<code>malloc</code>) حتى يحرره المضيف تلقائيا عبر
+                            <code>instalink_extension_free_string()</code>.</p>
+                        <pre><code>#include "instalink_extension_api.h"
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+
+static std::string g_runtime_root;
+
+static const char* DupJson(const std::string&amp; s) {
+    char* buf = static_cast&lt;char*&gt;(std::malloc(s.size() + 1));
+    if (buf) std::memcpy(buf, s.c_str(), s.size() + 1);
+    return buf;
+}
+
+extern "C" {
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_on_load(const char* runtime_root) {
+    g_runtime_root = runtime_root ? runtime_root : "";
+    // استخدم g_runtime_root للوصول إلى ملفات الموديلات داخل مجلد الإضافة
+}
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_on_unload() {
+    g_runtime_root.clear();
+}
+
+INSTALINK_EXTENSION_EXPORT const char* instalink_extension_describe() {
+    return DupJson(R"({"ok":true,"adapter":"smart_native_adapter","api_version":2,"actions":["inspect","echo","process"]})");
+}
+
+INSTALINK_EXTENSION_EXPORT const char* instalink_extension_invoke(const char* action, const char* payload_json) {
+    std::string act = action ? action : "";
+    std::string body = payload_json ? payload_json : "{}";
+    if (act == "echo") {
+        return DupJson(std::string("{\"ok\":true,\"root\":\"") + g_runtime_root + "\",\"payload\":" + body + "}");
+    }
+    return DupJson("{\"ok\":true,\"status\":\"completed\"}");
+}
+
+INSTALINK_EXTENSION_EXPORT void instalink_extension_free_string(const char* value) {
+    std::free(const_cast&lt;char*&gt;(value));
+}
+
+}</code></pre>
+
+                        <h2>2. ملف البناء <code>CMakeLists.txt</code> والتوافق مع Android 15+</h2>
+                        <pre><code>cmake_minimum_required(VERSION 3.22.1)
+project(smart_native_adapter LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+
+add_library(smart_native_adapter SHARED adapter.cpp)
+target_include_directories(smart_native_adapter PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(smart_native_adapter log)
+target_link_options(smart_native_adapter PRIVATE "-Wl,-z,max-page-size=16384")</code></pre>
+
+                        <h2>3. مثال TTS ذكي دون إنترنت (نموذج <code>native_sherpa_tts</code>) وتشغيل الصوت</h2>
+                        <p>يوضح قالب <code>templates/native_sherpa_tts/</code> كيفية تحميل موديلات ONNX عبر C++ وإنتاج
+                            ملف صوتي WAV ثم تشغيله داخل واجهة HTML:</p>
+                        <pre><code>// 1. فحص المكتبة الأصلية والرموز المصدّرة
+const inspect = window.InstaLink.nativeRuntime.inspect(extId);
+
+// 2. تهيئة محرك Sherpa-ONNX من داخل مجلد الإضافة
+window.InstaLink.nativeRuntime.invoke(extId, "init", {
+  model_path: "runtime_bundle/models/ar_JO-kareem-low.onnx",
+  tokens: "runtime_bundle/models/tokens.txt",
+  data_dir: "runtime_bundle/models/espeak-ng-data",
+  num_threads: 2
+});
+
+// 3. توليد ملف صوتي وتشغيله في عنصر &lt;audio&gt;
+const res = window.InstaLink.nativeRuntime.invoke(extId, "synthesize", {
+  text: "مرحبا بكم في المتصفح الذكي",
+  speaker_id: 0,
+  speed: 1.0,
+  output_path: "cache/tts_output.wav"
+});
+if (res.ok &amp;&amp; res.audio_path) {
+  audioPlayer.src = "file://" + encodeURI(res.audio_path.replace(/\\/g, "/")) + "?v=" + Date.now();
+  audioPlayer.play();
+}</code></pre>
+
+                        <h2>4. ملفات الإضافة الأصلية وتحديد الرموز (<code>export.map</code>)</h2>
+                        <div class="table-wrap">
+                            <table>
+                                <thead><tr><th>المسار / المجلد</th><th>يُشحن في الحزمة؟</th><th>الدور</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>native/CMakeLists.txt</code> و<code>adapter.cpp</code> و<code>export.map</code></td><td>لا (مصدر التطوير)</td><td>أكواد C++ وإعدادات البناء</td></tr>
+                                    <tr><td><code>runtime_bundle/adapters/&lt;abi&gt;/</code></td><td>نعم</td><td>المكتبات المترجمة بصيغة <code>.so</code> لمعماريات <code>arm64-v8a</code> و<code>armeabi-v7a</code> و<code>x86_64</code></td></tr>
+                                    <tr><td><code>runtime_bundle/jniLibs/&lt;abi&gt;/</code></td><td>نعم</td><td>المكتبات المشتركة المطلوبة قبل تحميل المحول مثل <code>libc++_shared.so</code> و<code>libonnxruntime.so</code></td></tr>
+                                    <tr><td><code>runtime_bundle/models/</code></td><td>نعم</td><td>ملفات الموديلات والبيانات غير المتصلة بالإنترنت (مثل <code>ar_JO-kareem-low.onnx</code> و<code>tokens.txt</code> و<code>espeak-ng-data</code>)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>استخدم ملف <code>export.map</code> لتصدير رموز الواجهة القياسية فقط (ويمكن إضافة دوال الألعاب الـ 4 للألعاب الأصلية):</p>
+                        <pre><code>{
+  global:
+    instalink_extension_on_load;
+    instalink_extension_on_unload;
+    instalink_extension_describe;
+    instalink_extension_invoke;
+    instalink_extension_free_string;
+  local: *;
+};</code></pre>
+                        <h3>دوال مساعدة لتسجيل الأخطاء وتأمين JSON في C++</h3>
+                        <pre><code>#include &lt;android/log.h&gt;
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "MyAdapter", __VA_ARGS__)
+
+static std::string EscapeJson(const std::string&amp; value) {
+    std::string out;
+    for (char ch : value) {
+        if (ch == '\\') out += "\\\\";
+        else if (ch == '"') out += "\\\"";
+        else if (ch == '\n') out += "\\n";
+        else out += ch;
+    }
+    return out;
+}</code></pre>
+
+                        <h2>5. إعداد <code>manifest.json</code> وأمر الترجمة التلقائي</h2>
+                        <pre><code>"permissions": ["storage", "instalink_page", "home_entry", "native_runtime"],
+"native_runtime": {
+  "library_root": "runtime_bundle/adapters",
+  "library_name": "libsmart_native_adapter.so",
+  "dependency_root": "runtime_bundle/jniLibs",
+  "dependencies": ["libc++_shared.so"],
+  "supports_surface_rendering": false,
+  "startup_action": "init"
+}</code></pre>
+                        <pre><code># يبني معماريات arm64-v8a و armeabi-v7a و x86_64 ويتحقق من الدوال عبر llvm-readelf
+tools\build-native.bat .\my-native-extension</code></pre>
+                    </div>
+                </section>
+
+                <!-- 8. IMMERSIVE GAMES -->
+                <section id="sec-games" class="doc-section" data-tab="games">
+                    <div class="lang-en">
+                        <h1>Immersive games SDK</h1>
+                        <p>InstaLink supports fullscreen app-like games either via HTML5 Canvas
+                            (<code>immersive_web</code>) or native <code>ANativeWindow</code> rendering
+                            (<code>immersive_native</code>) with shell-provided D-Pad and action buttons.</p>
+                        <h2>Immersive native game manifest</h2>
+                        <pre><code>"presentation": {
+  "mode": "immersive_native",
+  "renderer": "native_surface",
+  "show_exit_chip": true,
+  "prefer_landscape": true
+},
+"native_runtime": {
+  "library_root": "runtime_bundle/adapters",
+  "library_name": "libmy_game.so",
+  "dependency_root": "runtime_bundle/jniLibs",
+  "dependencies": ["libc++_shared.so"],
+  "supports_surface_rendering": true,
+  "startup_action": "game_boot"
+},
+"game_controls": {
+  "layout": "dpad",
+  "primary_button": { "id": "restart", "label": "RESET" },
+  "secondary_button": { "id": "pause", "label": "PAUSE" }
+}</code></pre>
+                        <h2>Surface &amp; input hooks (<code>ANativeWindow</code>)</h2>
+                        <p>Implement <code>instalink_extension_game_attach_surface</code>, <code>resize_surface</code>,
+                            <code>detach_surface</code>, and <code>handle_input</code>. Inputs arrive as JSON payloads
+                            for <code>pointer</code>, <code>key</code>, and <code>virtual_button</code> events:</p>
+                        <pre><code>// Touch pointer event
+{ "type": "pointer", "action": "down", "x": 120.5, "y": 340.2, "width": 1080, "height": 2200 }
+// D-Pad or action button press
+{ "type": "virtual_button", "action": "press", "button": "left" }
+// Hardware keyboard event
+{ "type": "key", "action": "down", "key_code": 21 }</code></pre>
+                        <h3>C++ 60 FPS Render Loop Pattern</h3>
+                        <pre><code>#include &lt;android/native_window.h&gt;
+#include "instalink_extension_api.h"
+
+static ANativeWindow* g_window = nullptr;
+
+extern "C" INSTALINK_EXTENSION_EXPORT void instalink_extension_game_attach_surface(void* native_window, int width, int height) {
+    g_window = static_cast&lt;ANativeWindow*&gt;(native_window);
+    ANativeWindow_acquire(g_window);
+    ANativeWindow_setBuffersGeometry(g_window, width, height, WINDOW_FORMAT_RGBA_8888);
+    // Lock &amp; draw pixels with ANativeWindow_lock / ANativeWindow_unlockAndPost on your render thread
+}
+
+extern "C" INSTALINK_EXTENSION_EXPORT void instalink_extension_game_detach_surface() {
+    if (g_window) { ANativeWindow_release(g_window); g_window = nullptr; }
+}</code></pre>
+                        <h3>HTML5 Canvas Mode (<code>immersive_web</code>)</h3>
+                        <pre><code>"presentation": { "mode": "immersive_web", "renderer": "web_canvas", "show_exit_chip": true }</code></pre>
+                        <p>Ready examples in SDK: <code>examples/cpp-snake-game</code>, <code>examples/cpp-3d-dodger</code>, <code>examples/cpp-3d-snake</code>, and <code>examples/native-tic-tac-toe</code>.</p>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>الألعاب المدمجة بملء الشاشة</h1>
+                        <p>يدعم المتصفح تشغيل الألعاب بوضع التطبيق الكامل عبر HTML5 Canvas (<code>immersive_web</code>)
+                            أو الرسم المباشر على <code>ANativeWindow</code> بلغة C++ (<code>immersive_native</code>) مع
+                            أزرار تحكم D-Pad مدمجة.</p>
+                        <h2>إعداد <code>manifest.json</code> للألعاب الأصلية</h2>
+                        <pre><code>"presentation": {
+  "mode": "immersive_native",
+  "renderer": "native_surface",
+  "show_exit_chip": true,
+  "prefer_landscape": true
+},
+"native_runtime": {
+  "library_root": "runtime_bundle/adapters",
+  "library_name": "libmy_game.so",
+  "dependency_root": "runtime_bundle/jniLibs",
+  "dependencies": ["libc++_shared.so"],
+  "supports_surface_rendering": true,
+  "startup_action": "game_boot"
+},
+"game_controls": {
+  "layout": "dpad",
+  "primary_button": { "id": "restart", "label": "RESET" },
+  "secondary_button": { "id": "pause", "label": "PAUSE" }
+}</code></pre>
+                        <h2>استقبال السطح والتحكم (<code>ANativeWindow</code>)</h2>
+                        <p>نفّذ دوال <code>instalink_extension_game_attach_surface</code> و<code>resize_surface</code>
+                            و<code>detach_surface</code> و<code>handle_input</code> لاستقبال أحداث اللمس والكيبورد وأزرار الـ D-Pad:</p>
+                        <pre><code>// حدث لمس الشاشة
+{ "type": "pointer", "action": "down", "x": 120.5, "y": 340.2, "width": 1080, "height": 2200 }
+// الضغط على زر D-Pad أو الأزرار الجانبية
+{ "type": "virtual_button", "action": "press", "button": "left" }
+// ضغطة زر كيبورد
+{ "type": "key", "action": "down", "key_code": 21 }</code></pre>
+                        <h3>تهيئة السطح للرسم في C++</h3>
+                        <pre><code>#include &lt;android/native_window.h&gt;
+#include "instalink_extension_api.h"
+
+static ANativeWindow* g_window = nullptr;
+
+extern "C" INSTALINK_EXTENSION_EXPORT void instalink_extension_game_attach_surface(void* native_window, int width, int height) {
+    g_window = static_cast&lt;ANativeWindow*&gt;(native_window);
+    ANativeWindow_acquire(g_window);
+    ANativeWindow_setBuffersGeometry(g_window, width, height, WINDOW_FORMAT_RGBA_8888);
+}
+
+extern "C" INSTALINK_EXTENSION_EXPORT void instalink_extension_game_detach_surface() {
+    if (g_window) { ANativeWindow_release(g_window); g_window = nullptr; }
+}</code></pre>
+                        <h3>ألعاب HTML5 Canvas بملء الشاشة (<code>immersive_web</code>)</h3>
+                        <pre><code>"presentation": { "mode": "immersive_web", "renderer": "web_canvas", "show_exit_chip": true }</code></pre>
+                        <p>أمثلة جاهزة في الحزمة: <code>examples/cpp-snake-game</code> و<code>examples/cpp-3d-dodger</code> و<code>examples/cpp-3d-snake</code> و<code>examples/native-tic-tac-toe</code>.</p>
+                    </div>
+                </section>
+
+                <!-- 9. TESTING & PUBLISHING -->
+                <section id="sec-publish" class="doc-section" data-tab="develop">
+                    <div class="lang-en">
+                        <h1>Test, debug &amp; publish</h1>
+                        <h2>Testing Web UIs on Desktop Chrome</h2>
+                        <p>Include <code>lib/instalink-sdk.js</code> in your HTML so all <code>window.InstaLink</code> calls automatically switch to console-logged mocks when previewed in desktop Chrome.</p>
+                        <h2>Debugging with ADB Logcat</h2>
+                        <pre><code>adb logcat -s InstaLinkNative InstaLinkExtension</code></pre>
+                        <ul>
+                            <li><code>InstaLinkNative</code> &mdash; Logs from C++ adapter loading (<code>dlopen/dlsym</code>) and native execution.</li>
+                            <li><code>InstaLinkExtension</code> &mdash; Logs extension permissions, capability calls, and all WebView JS <code>console.log()</code> / errors.</li>
+                        </ul>
+                        <h2>Packaging &amp; pre-publish checklist</h2>
+                        <pre><code># Windows
+tools\pack-extension.bat .\my-extension
+# Linux / macOS
+./tools/pack-extension.sh ./my-extension</code></pre>
+                        <ul>
+                            <li>Confirm <code>manifest.json</code> sits directly at the archive root (excludes <code>native/</code>, <code>build/</code>, <code>dist/</code>, <code>.git/</code>).</li>
+                            <li>Sideload via <strong>InstaLink / Extensions / Install from file</strong> on
+                                Android before publishing.</li>
+                            <li>For native extensions, verify
+                                <code>runtime_bundle/adapters/&lt;abi&gt;/&lt;library_name&gt;</code> is present inside
+                                the archive.</li>
+                            <li>Prepare extension icon, screenshots, accurate <code>version</code>, and description matching <code>manifest.json</code> for store submission.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lang-ar" style="display:none;">
+                        <h1>الاختبار والتغليف والنشر</h1>
+                        <h2>اختبار الواجهة على متصفح الكمبيوتر</h2>
+                        <p>أدرج <code>lib/instalink-sdk.js</code> داخل صفحات HTML لتعمل واجهات <code>window.InstaLink</code> تلقائيا في وضع المحاكاة عند معاينتها على Chrome بالكمبيوتر.</p>
+                        <h2>مراقبة السجلات عبر ADB</h2>
+                        <pre><code>adb logcat -s InstaLinkNative InstaLinkExtension</code></pre>
+                        <ul>
+                            <li><code>InstaLinkNative</code> &mdash; سجلات تحميل مكتبات C++ واستدعاء الدوال الأصلية.</li>
+                            <li><code>InstaLinkExtension</code> &mdash; سجلات الصلاحيات وقدرات النظام ومخرجات <code>console.log()</code> وأخطاء JavaScript من داخل الإضافة تلقائيا.</li>
+                        </ul>
+                        <h2>التغليف وقائمة المراجعة قبل النشر</h2>
+                        <pre><code># ويندوز (يستبعد native و build تلقائيا)
+tools\pack-extension.bat .\my-extension
+# لينكس / ماك
+./tools/pack-extension.sh ./my-extension</code></pre>
+                        <ul>
+                            <li>تأكد من وجود <code>manifest.json</code> في جذر الحزمة المضغوطة مباشرة.</li>
+                            <li>جرّب التثبيت أولا من داخل التطبيق عبر <strong>الإضافات / تثبيت من ملف</strong>.</li>
+                            <li>في الإضافات الأصلية، تأكد من وجود ملفات <code>.so</code> داخل
+                                <code>runtime_bundle/adapters/</code> قبل الرفع للمتجر.</li>
+                            <li>جهّز الأيقونة ولقطات الشاشة وتطابق رقم الإصدار <code>version</code> والوصف مع <code>manifest.json</code> عند الرفع في المتجر.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

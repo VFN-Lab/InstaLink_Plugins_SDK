@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Sherpa TTS</title>
+  <style>
+    body { font-family: Segoe UI, sans-serif; margin: 0; background: #f8fafc; color: #0f172a; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 40px; }
+    .card { background: #fff; border: 1px solid #dbe3ee; border-radius: 22px; padding: 18px; margin-bottom: 16px; box-shadow: 0 16px 28px rgba(15, 23, 42, 0.06); }
+    h1, h2 { margin: 0 0 10px; }
+    p { color: #475569; line-height: 1.7; }
+    textarea, input { width: 100%; padding: 12px; border-radius: 14px; border: 1px solid #cbd5e1; font: inherit; }
+    textarea { min-height: 140px; }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top: 12px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    button, a { border: 0; border-radius: 14px; background: #7f1d1d; color: #fff; padding: 10px 14px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    button.secondary, a.secondary { background: #e5e7eb; color: #111827; }
+    pre { background: #111827; color: #f9fafb; padding: 14px; border-radius: 16px; min-height: 240px; white-space: pre-wrap; word-break: break-word; }
+    audio { width: 100%; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="card">
+      <h1>Sample Sherpa TTS</h1>
+      <p>
+        This template shows how an external developer packages a Sherpa-ONNX
+        extension without touching the InstaLink app source.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Speech</h2>
+      <textarea id="speechText">Welcome to the external Sherpa TTS extension template.</textarea>
+      <div class="grid">
+        <div>
+          <label for="speedInput">Speed</label>
+          <input id="speedInput" type="number" step="0.05" min="0.6" max="1.5" value="1.0" />
+        </div>
+        <div>
+          <label for="speakerInput">Speaker</label>
+          <input id="speakerInput" type="number" step="1" min="0" value="0" />
+        </div>
+        <div>
+          <label for="threadsInput">Threads</label>
+          <input id="threadsInput" type="number" step="1" min="1" max="8" value="2" />
+        </div>
+      </div>
+      <div class="actions">
+        <button id="inspectButton" class="secondary">Inspect Runtime</button>
+        <button id="infoButton" class="secondary">Get Info</button>
+        <button id="initButton">Init</button>
+        <button id="speakButton">Generate + Play</button>
+        <button id="generateButton" class="secondary">Generate Only</button>
+        <button id="stopButton" class="secondary">Stop</button>
+        <a id="downloadLink" class="secondary" download="sherpa_tts.wav">Download WAV</a>
+      </div>
+      <audio id="audioPlayer" controls></audio>
+    </section>
+
+    <section class="card">
+      <h2>Result</h2>
+      <pre id="resultLog">Waiting for InstaLink.nativeRuntime...</pre>
+    </section>
+  </div>
+
+  <script>
+    (function init(attempt) {
+      var logNode = document.getElementById("resultLog");
+      var audioPlayer = document.getElementById("audioPlayer");
+      var downloadLink = document.getElementById("downloadLink");
+      var extensionId = window.InstaLinkActiveExtension || "sample.sherpa.tts";
+
+      function render(value) {
+        logNode.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+      }
+
+      if (!(window.InstaLink && window.InstaLink.nativeRuntime && window.InstaLink.__nativeReady)) {
+        if ((attempt || 0) > 50) {
+          render({ ok: false, error: "bridge_unavailable" });
+          return;
+        }
+        return setTimeout(function () { init((attempt || 0) + 1); }, 120);
+      }
+
+      function normalize(result) {
+        if (result && typeof result === "object" && typeof result.status === "string" && typeof result.ok !== "boolean") {
+          result.ok = result.status === "ok";
+          if (!result.ok && !result.error && result.message) {
+            result.error = result.message;
+          }
+        }
+        return result;
+      }
+
+      function invoke(action, payload) {
+        return normalize(window.InstaLink.nativeRuntime.invoke(extensionId, action, payload || {}));
+      }
+
+      function config() {
+        return {
+          model_path: "runtime_bundle/models/ar_JO-kareem-low.onnx",
+          tokens: "runtime_bundle/models/tokens.txt",
+          data_dir: "runtime_bundle/models/espeak-ng-data",
+          num_threads: Number(document.getElementById("threadsInput").value || 2),
+          debug: false
+        };
+      }
+
+      function synthPayload() {
+        return {
+          text: String(document.getElementById("speechText").value || "").trim(),
+          speaker_id: Number(document.getElementById("speakerInput").value || 0),
+          speed: Number(document.getElementById("speedInput").value || 1),
+          output_path: "cache/tts_output.wav"
+        };
+      }
+
+      function attachAudio(result, autoPlay) {
+        render(result);
+        if (!result || !result.ok || !result.audio_path) {
+          return result;
+        }
+        var fileUrl = "file://" + encodeURI(String(result.audio_path).replace(/\\/g, "/")) + "?v=" + Date.now();
+        audioPlayer.src = fileUrl;
+        downloadLink.href = fileUrl;
+        if (autoPlay) {
+          audioPlayer.play().catch(function (error) {
+            render({ ok: false, error: "audio_playback_failed", details: String(error), result: result });
+          });
+        }
+        return result;
+      }
+
+      document.getElementById("inspectButton").addEventListener("click", function () {
+        render(window.InstaLink.nativeRuntime.inspect(extensionId));
+      });
+      document.getElementById("infoButton").addEventListener("click", function () {
+        render(invoke("get_info", {}));
+      });
+      document.getElementById("initButton").addEventListener("click", function () {
+        render(invoke("init", config()));
+      });
+      document.getElementById("speakButton").addEventListener("click", function () {
+        var prepared = invoke("init", config());
+        if (!prepared || !prepared.ok) {
+          render({ ok: false, step: "init", result: prepared });
+          return;
+        }
+        attachAudio(invoke("synthesize", synthPayload()), true);
+      });
+      document.getElementById("generateButton").addEventListener("click", function () {
+        var prepared = invoke("init", config());
+        if (!prepared || !prepared.ok) {
+          render({ ok: false, step: "init", result: prepared });
+          return;
+        }
+        attachAudio(invoke("synthesize", synthPayload()), false);
+      });
+      document.getElementById("stopButton").addEventListener("click", function () {
+        audioPlayer.pause();
+        render(invoke("stop", {}));
+      });
+
+      render({ ok: true, ready: true, extensionId: extensionId });
+    })();
+  </script>
+</body>
+</html>

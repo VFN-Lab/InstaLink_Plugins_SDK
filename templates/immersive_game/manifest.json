@@ -1,0 +1,29 @@
+{
+  "spec_version": "2.0",
+  "id": "sample.immersive.game",
+  "slug": "sample-immersive-game",
+  "name": "Sample Immersive Game",
+  "version": "1.0.0",
+  "author": "InstaSDK",
+  "description": "Template for a full-screen native C++ game.",
+  "type": "hosted",
+  "runtime_mode": "native",
+  "permissions": ["native_runtime"],
+  "presentation": {
+    "mode": "immersive_native",
+    "renderer": "native_surface",
+    "show_exit_chip": true,
+    "prefer_landscape": true
+  },
+  "native_runtime": {
+    "library_root": "runtime_bundle/adapters",
+    "library_name": "libsample_game.so",
+    "supports_surface_rendering": true
+  },
+  "game_controls": {
+    "layout": "none"
+  },
+  "icon_path": "icon.svg"
+}
+
+

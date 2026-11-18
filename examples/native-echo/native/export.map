@@ -1,0 +1,9 @@
+{
+  global:
+    instalink_extension_on_load;
+    instalink_extension_on_unload;
+    instalink_extension_describe;
+    instalink_extension_invoke;
+    instalink_extension_free_string;
+  local: *;
+};

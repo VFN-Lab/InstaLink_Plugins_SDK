@@ -1,0 +1,22 @@
+/* Injected into every page */
+body {
+    border-top: 4px solid #10b981 !important;
+}
+
+.instalink-injected-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #10b981;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 2147483647; /* Max z-index */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    pointer-events: none;
+}
+
+
